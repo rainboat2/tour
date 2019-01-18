@@ -9,12 +9,12 @@ import java.util.Stack;
 public class Dijkstra implements ShortPath {
 
     // 测试代码，查找每一对节点
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Graph g = Graph.getGraph();
         Dijkstra d = new Dijkstra(Graph.getGraph());
         int N = g.size();
-        for (int i = 0; i < N; i++){
-            for (int j = 0; j < N; j++){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
                 System.out.printf("from %s to %s\n", g.getVertex(i).getName(), g.getVertex(j).getName());
                 Stack<Vertex> stack = d.pathTo(g.getVertex(i).getName(), g.getVertex(j).getName());
                 while (!stack.isEmpty())
@@ -27,7 +27,7 @@ public class Dijkstra implements ShortPath {
     private int[] pathTo;
     private int[] distance;
 
-    public Dijkstra(Graph g){
+    public Dijkstra(Graph g) {
         this.g = g;
     }
 
@@ -43,20 +43,20 @@ public class Dijkstra implements ShortPath {
         return stack;
     }
 
-    public void cal_route(int from, int dest){
+    public void cal_route(int from, int dest) {
         int N = g.size();
         distance = new int[N];
         pathTo = new int[N];
         boolean[] marked = new boolean[N];
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             distance[i] = Integer.MAX_VALUE;
             pathTo[i] = from;
             marked[i] = false;
         }
         distance[from] = 0;
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             int v = getMin(marked);
-            if (v == -1)   break;     //已经找不到下一个可达的节点，算法结束
+            if (v == -1) break;     //已经找不到下一个可达的节点，算法结束
             if (v == dest) break;     //已经找到到达dest的最短路径，不用再继续寻找下去
             relax(v, distance, pathTo);
             marked[v] = true;
@@ -64,8 +64,7 @@ public class Dijkstra implements ShortPath {
     }
 
 
-
-    private int getMin(boolean[] marked){
+    private int getMin(boolean[] marked) {
         int min = 0;
         while (min < distance.length && marked[min]) min++;
         for (int i = min; i < distance.length; i++)
@@ -76,11 +75,11 @@ public class Dijkstra implements ShortPath {
     }
 
 
-    private void relax(int v, int[] cost, int[] pathTo){
+    private void relax(int v, int[] cost, int[] pathTo) {
         Vertex a = g.getVertex(v);
-        for (Edge e : g.getAdjacentEdges(v)){
+        for (Edge e : g.getAdjacentEdges(v)) {
             int w = g.indexOf(e.other(a).getName());
-            if (cost[w] > cost[v] + e.distance()){
+            if (cost[w] > cost[v] + e.distance()) {
                 cost[w] = cost[v] + e.distance();
                 pathTo[w] = v;
             }

@@ -13,12 +13,12 @@ public class Search_Sort {
 
     private Graph g;
 
-    public Search_Sort(Graph g){
+    public Search_Sort(Graph g) {
         this.g = g;
     }
 
     // 对所有的节点进行模糊匹配
-    public Vertex[] search(String keyword){
+    public Vertex[] search(String keyword) {
         List<Vertex> list = new LinkedList<>();
         for (Vertex v : g.getAllVertex())
             if (v.isContains(keyword))
@@ -28,9 +28,9 @@ public class Search_Sort {
         return v;
     }
 
-    public void sort(String pattern, Vertex[] v){
+    public void sort(String pattern, Vertex[] v) {
         Sort<Vertex> s = new Sort<>();
-        switch (pattern){
+        switch (pattern) {
             case "欢迎度":
                 s.quick(v, Comparator.comparing(Vertex::getPopular));
                 break;

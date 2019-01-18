@@ -23,7 +23,7 @@ public class Admin extends JFrame {
     private Graph g;
     private VertexShow vertexShow;     //负责节点信息显示
     private Search_Sort search_sort;   //负责节点信息查找
-    private GraphModify graphModify;     //负责节点和边的增删查改
+    private GraphModify graphModify;   //负责节点和边的增删查改
     private Notification notification; //负责通知的相关管理
 
     public Admin(Graph g) {
@@ -33,8 +33,18 @@ public class Admin extends JFrame {
         init();
     }
 
+    private void MyComponents() {
+        // addVertex custom component creation code here
+        vertexShow = new VertexShow();
+        showPanel.add(vertexShow);
+        vertexShow.draw(g, null);
+
+        Analyze analyze = new Analyze(g);
+        anlayzePanel.add(analyze);
+    }
+
     // 用于初始一些自定义的参数
-    private void init(){
+    private void init() {
         search_sort = new Search_Sort(g);
         graphModify = new GraphModify(g);
         notification = new Notification();
@@ -47,9 +57,9 @@ public class Admin extends JFrame {
     }
 
     @SuppressWarnings("Duplicates")
-    private void showVertex(Vertex[] vertices){
+    private void showVertex(Vertex[] vertices) {
         String[][] t = new String[vertices.length][2];
-        for (int i = 0; i < vertices.length; i++){
+        for (int i = 0; i < vertices.length; i++) {
             t[i][0] = vertices[i].getName();
             t[i][1] = vertices[i].getDescription();
         }
@@ -58,26 +68,16 @@ public class Admin extends JFrame {
         table1.setModel(model);
     }
 
-    private void searchAndShow(){
+    private void searchAndShow() {
         String keyword = searchTextField.getText();
         Vertex[] vertices = search_sort.search(keyword);
         showVertex(vertices);
     }
 
-    private void MyComponents() {
-        // addVertex custom component creation code here
-        vertexShow = new VertexShow();
-        showPanel.add(vertexShow);
-        vertexShow.draw(g, null);
-
-        Analyze analyze = new Analyze();
-        panel2.add(analyze);
-    }
-
     @SuppressWarnings("Duplicates")
     private void tableMouseClicked(MouseEvent e) {
         int row = table1.getSelectedRow();
-        String name = (String)table1.getValueAt(row, 0);
+        String name = (String) table1.getValueAt(row, 0);
         Vertex v = g.getVertex(name);
         vertexShow.draw(g, v);
     }
@@ -88,60 +88,60 @@ public class Admin extends JFrame {
     }
 
     private void modifyMouseClicked(MouseEvent e) {
-        try{
+        try {
             Vertex v = getSelectVertex();
             graphModify.modify(v);
             vertexShow.draw(g, v);
-        }catch (UnsupportedOperationException ex){
+        } catch (UnsupportedOperationException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private Vertex getSelectVertex(){
+    private Vertex getSelectVertex() {
         int row = table1.getSelectedRow();
         if (row == -1) throw new UnsupportedOperationException("请先选择需要修改的节点");
-        String name = (String)table1.getValueAt(row, 0);
+        String name = (String) table1.getValueAt(row, 0);
         Vertex v = g.getVertex(name);
         return v;
     }
 
     private void addMouseClicked(MouseEvent e) {
-        try{
+        try {
             graphModify.addVertex();
             // 删除后重新执行搜索，更新表格内容
             searchAndShow();
-        }catch (UnsupportedOperationException ex){
+        } catch (UnsupportedOperationException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-        }catch (RuntimeException ex){
+        } catch (RuntimeException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     // 在删除节点按钮点击的时候被调用
     private void deleteMouseClicked(MouseEvent e) {
-        try{
+        try {
             Vertex v = getSelectVertex();
             graphModify.deleteVertex(v);
             searchAndShow();  //调用该方法更新表格
-        }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void addEdgeMouseClicked(MouseEvent e) {
-        try{
+        try {
             graphModify.addEdge();
             vertexShow.draw(g, g.getVertex(0));
-        }catch (NumberFormatException | NoSuchElementException ex){
+        } catch (NumberFormatException | NoSuchElementException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void deleteEdgeMouseClicked(MouseEvent e) {
-        try{
+        try {
             graphModify.deleteEdge();
             vertexShow.draw(g, g.getVertex(0));
-        }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -156,7 +156,7 @@ public class Admin extends JFrame {
 
     // 在退出前执行保存和打开新窗口的操作
     // 非常重要，必需调用
-    private void end(){
+    private void end() {
         g.save();
         notification.save();
         Main m = new Main();
@@ -181,7 +181,7 @@ public class Admin extends JFrame {
         table1 = new JTable();
         button7 = new JButton();
         showPanel = new JPanel();
-        panel2 = new JPanel();
+        anlayzePanel = new JPanel();
 
         //======== this ========
         setTitle("Admin System");
@@ -297,24 +297,26 @@ public class Admin extends JFrame {
 
                         //---- table1 ----
                         table1.setModel(new DefaultTableModel(
-                            new Object[][] {
-                                {null, null},
-                                {null, null},
-                            },
-                            new String[] {
-                                "\u666f\u70b9\u540d\u79f0", "\u666f\u70b9\u4ecb\u7ecd"
-                            }
+                                new Object[][]{
+                                        {null, null},
+                                        {null, null},
+                                },
+                                new String[]{
+                                        "\u666f\u70b9\u540d\u79f0", "\u666f\u70b9\u4ecb\u7ecd"
+                                }
                         ) {
-                            Class<?>[] columnTypes = new Class<?>[] {
-                                String.class, String.class
+                            Class<?>[] columnTypes = new Class<?>[]{
+                                    String.class, String.class
                             };
-                            boolean[] columnEditable = new boolean[] {
-                                false, false
+                            boolean[] columnEditable = new boolean[]{
+                                    false, false
                             };
+
                             @Override
                             public Class<?> getColumnClass(int columnIndex) {
                                 return columnTypes[columnIndex];
                             }
+
                             @Override
                             public boolean isCellEditable(int rowIndex, int columnIndex) {
                                 return columnEditable[columnIndex];
@@ -352,7 +354,7 @@ public class Admin extends JFrame {
 
                     { // compute preferred size
                         Dimension preferredSize = new Dimension();
-                        for(int i = 0; i < controlPanel.getComponentCount(); i++) {
+                        for (int i = 0; i < controlPanel.getComponentCount(); i++) {
                             Rectangle bounds = controlPanel.getComponent(i).getBounds();
                             preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                             preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -377,7 +379,7 @@ public class Admin extends JFrame {
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < panel1.getComponentCount(); i++) {
+                    for (int i = 0; i < panel1.getComponentCount(); i++) {
                         Rectangle bounds = panel1.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -391,11 +393,11 @@ public class Admin extends JFrame {
             }
             tabbedPane1.addTab("\u666f\u70b9\u4fe1\u606f\u7ef4\u62a4", panel1);
 
-            //======== panel2 ========
+            //======== anlayzePanel ========
             {
-                panel2.setLayout(new GridLayout());
+                anlayzePanel.setLayout(new GridLayout());
             }
-            tabbedPane1.addTab("\u666f\u70b9\u5206\u6790", panel2);
+            tabbedPane1.addTab("\u666f\u70b9\u5206\u6790", anlayzePanel);
         }
         contentPane.add(tabbedPane1);
         pack();
@@ -419,6 +421,6 @@ public class Admin extends JFrame {
     private JTable table1;
     private JButton button7;
     private JPanel showPanel;
-    private JPanel panel2;
+    private JPanel anlayzePanel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

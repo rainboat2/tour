@@ -11,8 +11,8 @@ import tour.TourPath;
  * TourPath Tester.
  *
  * @author <Authors name>
- * @since <pre>一月 18, 2019</pre>
  * @version 1.0
+ * @since <pre>一月 18, 2019</pre>
  */
 public class TourPathTest {
 
@@ -25,9 +25,7 @@ public class TourPathTest {
     }
 
     /**
-     *
      * Method: getTourPath(String start)
-     *
      */
     @Test
     public void testGetTourPath() throws Exception {
@@ -39,9 +37,7 @@ public class TourPathTest {
     }
 
     /**
-     *
      * Method: getMissPath(String start)
-     *
      */
     @Test
     public void testGetMissPath() throws Exception {
@@ -49,9 +45,7 @@ public class TourPathTest {
     }
 
     /**
-     *
      * Method: getSequence(String start)
-     *
      */
     @Test
     public void testGetSequence() throws Exception {
@@ -60,9 +54,7 @@ public class TourPathTest {
 
 
     /**
-     *
      * Method: getAnalysis(String start)
-     *
      */
     @Test
     public void testGetAnalysis() throws Exception {

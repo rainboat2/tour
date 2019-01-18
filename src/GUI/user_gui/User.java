@@ -26,7 +26,7 @@ public class User extends JFrame {
     }
 
     //初始化自定义组件
-    private void init(){
+    private void init() {
         information = new InformationPanel(g);
         information.setVisible(true);
         sceneryPanel.add(information);

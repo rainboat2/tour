@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * 1. 最小生成树 ：用于生成汉密尔顿回路序列
  * 2. 原图      ：用于根据一个节点序列生成一组路径
  * 3. 起点
- *
+ * <p>
  * 提供的功能：
  * 1.生成近似路径序列
  */
@@ -21,12 +21,12 @@ public class HamiltonRoadFinder {
     private ArrayList<Vertex> path;           //存放求得的路径序列
     private boolean[] marked;
 
-    public HamiltonRoadFinder(Graph subTree){
+    public HamiltonRoadFinder(Graph subTree) {
         this.subTree = subTree;
         this.marked = new boolean[subTree.size()];
     }
 
-    public ArrayList<Vertex> getSequence(int start){
+    public ArrayList<Vertex> getSequence(int start) {
         if (start < 0 || start >= subTree.size())
             throw new NoSuchElementException("指定的节点不存在");
         path = new ArrayList<>(subTree.size());
@@ -40,7 +40,7 @@ public class HamiltonRoadFinder {
     /*
      * 根据最小生成树进行先序遍历得到一组近似的路径序列
      */
-    private void preOrder(int v){
+    private void preOrder(int v) {
         path.add(subTree.getVertex(v));
         marked[v] = true;
         // 遍历v的所有邻接节点
@@ -49,7 +49,7 @@ public class HamiltonRoadFinder {
                 preOrder(subTree.indexOf(w));
     }
 
-    private Iterable<Vertex> getAdj(int v){
+    private Iterable<Vertex> getAdj(int v) {
         return subTree.getAdjacentVertex(v);
     }
 
@@ -62,7 +62,7 @@ public class HamiltonRoadFinder {
      * @return true ： 必定存在汉密尔顿图
      *         false： 可能存在或不存在汉密尔顿图
      */
-    public static boolean hasHamiltonRoad(Graph g){
+    public static boolean hasHamiltonRoad(Graph g) {
         int N = g.size();
         for (int i = 0; i < g.size(); i++)
             for (int j = i + 1; j < g.size(); j++)

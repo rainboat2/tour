@@ -10,27 +10,27 @@ public class MyStack<Type> {
     private Type[] a;
     private int size;
 
-    public MyStack(){
+    public MyStack() {
         this(MAX_CAPACITY);
     }
 
-    public MyStack(int size){
+    public MyStack(int size) {
         a = (Type[]) new Object[size];
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return size == a.length;
     }
 
-    public Type pop(){
+    public Type pop() {
         if (isEmpty())
             throw new NoSuchElementException();
         Type t = a[--size];
@@ -38,18 +38,18 @@ public class MyStack<Type> {
         return t;
     }
 
-    public void push(Type t){
+    public void push(Type t) {
         if (isFull())
             throw new IndexOutOfBoundsException();
         a[size++] = t;
     }
 
-    public Iterator<Type> iterator(){
+    public Iterator<Type> iterator() {
         return new MyIterator();
     }
 
-    public Type peek(){
-        return a[size-1];
+    public Type peek() {
+        return a[size - 1];
     }
 
 

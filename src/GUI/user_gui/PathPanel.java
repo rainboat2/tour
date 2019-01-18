@@ -5,6 +5,7 @@
 package GUI.user_gui;
 
 import java.awt.event.*;
+
 import graph.Graph;
 import graph.algorithm.other.HamiltonRoadFinder;
 import graph.algorithm.short_path.Dijkstra;
@@ -35,21 +36,21 @@ public class PathPanel extends JPanel {
     }
 
     private void searchTourMouseClicked(MouseEvent e) {
-        try{
+        try {
             String start = tourStart.getText();
             String path = tourPath.getTourPath(start);
             resultArea.setText(path);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
 
     private void shortPathButtonMouseClicked(MouseEvent e) {
-        try{
+        try {
             String star = shortPathStart.getText();
             String end = shortPathEnd.getText();
             resultArea.setText(shortPathSearch.shortPath(star, end, new Dijkstra(g)));
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
@@ -158,7 +159,7 @@ public class PathPanel extends JPanel {
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < getComponentCount(); i++) {
+            for (int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

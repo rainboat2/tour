@@ -16,8 +16,8 @@ import java.util.List;
  * PathSequenceAnalysis Tester.
  *
  * @author <Authors name>
- * @since <pre>一月 18, 2019</pre>
  * @version 1.0
+ * @since <pre>一月 18, 2019</pre>
  */
 public class PathSequenceAnalysisTest {
 
@@ -39,9 +39,7 @@ public class PathSequenceAnalysisTest {
     }
 
     /**
-     *
      * Method: showTourPath()
-     *
      */
     @Test
     public void testShowTourPath() throws Exception {
@@ -49,9 +47,7 @@ public class PathSequenceAnalysisTest {
     }
 
     /**
-     *
      * Method: getMissPathAnalyzeResult()
-     *
      */
     @Test
     public void testGetMissPathAnalyzeResult() throws Exception {
@@ -60,9 +56,7 @@ public class PathSequenceAnalysisTest {
 
 
     /**
-     *
      * Method: missPathAnalyze(ShortPath shortPath)
-     *
      */
     @Test
     public void testMissPathAnalyze() throws Exception {
@@ -80,9 +74,7 @@ try {
     }
 
     /**
-     *
      * Method: getTourPath()
-     *
      */
     @Test
     public void testGetTourPath() throws Exception {
@@ -100,9 +92,7 @@ try {
     }
 
     /**
-     *
      * Method: miss(int start)
-     *
      */
     @Test
     public void testMiss() throws Exception {
@@ -120,9 +110,7 @@ try {
     }
 
     /**
-     *
      * Method: setPath(Stack<Vertex> stack)
-     *
      */
     @Test
     public void testSetPath() throws Exception {

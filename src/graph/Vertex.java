@@ -18,7 +18,7 @@ public class Vertex {
         this.imagePath = imagePath;
     }
 
-    public Vertex(String[] info){
+    public Vertex(String[] info) {
         setName(info[0]);
         setPopular(info[1]);
         setToilet(info[2]);
@@ -27,7 +27,7 @@ public class Vertex {
         setImagePath(info[5]);
     }
 
-    public boolean isContains(String pattern){
+    public boolean isContains(String pattern) {
         return name.contains(pattern) || description.contains(pattern);
     }
 
@@ -81,17 +81,17 @@ public class Vertex {
         this.imagePath = imagePath;
     }
 
-    private int getNumber(String s){
+    private int getNumber(String s) {
         int number;
         try {
             number = Integer.parseInt(s);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             number = 0;
         }
         return number;
     }
 
-    public String toString(){
+    public String toString() {
         return String.format("%s^%s^%s^%s^%s^%s", name, popular, restArea, toilet, description, imagePath);
     }
 }

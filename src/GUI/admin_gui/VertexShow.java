@@ -25,10 +25,11 @@ public class VertexShow extends JPanel {
 
     /**
      * 用于绘制显示景点信息的面板
+     *
      * @param g 景点所在的图
      * @param v 景点对象
      */
-    public void draw(Graph g, Vertex v){
+    public void draw(Graph g, Vertex v) {
         if (v == null)
             v = new Vertex("节点名称", "暂无描述", 0, 0, 0, "img/default.png");
         restArea.setText((v.getRestArea() > 0) ? v.getRestArea() + "个" : "无");
@@ -42,18 +43,18 @@ public class VertexShow extends JPanel {
         Iterable<Vertex> it = g.getAdjacentVertex(g.indexOf(v));
         StringBuilder s = new StringBuilder();
         if (it == null) s.append("无");
-        else{
+        else {
             for (Vertex w : g.getAdjacentVertex(g.indexOf(v)))
                 s.append(w.getName()).append(",");
         }
         adjecent.setText(s.toString());
     }
 
-    private void setImage(String path){
+    private void setImage(String path) {
         File f = new File(path);
         ImageIcon image;
-        if (f.exists())  image = new ImageIcon(path);
-        else             image = new ImageIcon("img/default.png");
+        if (f.exists()) image = new ImageIcon(path);
+        else image = new ImageIcon("img/default.png");
         Image img = image.getImage();
         img = img.getScaledInstance(400, 160, Image.SCALE_DEFAULT);
         image.setImage(img);
@@ -162,7 +163,7 @@ public class VertexShow extends JPanel {
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < getComponentCount(); i++) {
+            for (int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

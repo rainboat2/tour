@@ -12,14 +12,14 @@ public class Edge implements Comparable<Edge> {
         this.distance = distance;
     }
 
-    public int distance(){
+    public int distance() {
         return distance;
     }
 
     /**
      * @return 返回两个节点中的任意一个
      */
-    public Vertex either(){
+    public Vertex either() {
         return v;
     }
 
@@ -27,9 +27,9 @@ public class Edge implements Comparable<Edge> {
      * @param s 边对应的两个节点中的任意一个
      * @return 同于给定节点的
      */
-    public Vertex other(Vertex s){
-        if      (s.equals(v))   return w;
-        else if (s.equals(w))   return v;
+    public Vertex other(Vertex s) {
+        if (s.equals(v)) return w;
+        else if (s.equals(w)) return v;
         else throw new RuntimeException("inconsistent edge");
     }
 
@@ -37,7 +37,7 @@ public class Edge implements Comparable<Edge> {
         return Integer.compare(this.distance, that.distance);
     }
 
-    public String toString(){
+    public String toString() {
         return String.format("%s——%s——%d", v.getName(), w.getName(), distance);
     }
 }

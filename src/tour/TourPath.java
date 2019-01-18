@@ -16,32 +16,32 @@ public class TourPath {
     private HamiltonRoadFinder finder;
     private HashMap<String, List<Vertex>> sequenceMap;
 
-    public TourPath(Graph g, Small_Tree st){
+    public TourPath(Graph g, Small_Tree st) {
         this.g = g;
         this.finder = new HamiltonRoadFinder(st.subTree());
         sequenceMap = new HashMap<>();
     }
 
-    public String getTourPath(String start){
+    public String getTourPath(String start) {
         if (g.getVertex(start) == null)
             throw new NoSuchElementException("找不到指定节点");
         return getAnalysis(start).showTourPath();
     }
 
-    public String getMissPath(String start){
+    public String getMissPath(String start) {
         if (g.getVertex(start) == null)
             throw new NoSuchElementException("找不到指定节点");
         return getAnalysis(start).getMissPathAnalyzeResult();
     }
 
-    public List<Vertex> getSequence(String start){
+    public List<Vertex> getSequence(String start) {
         List<Vertex> sequence = sequenceMap.get(start);
         if (sequence == null)
             sequence = finder.getSequence(g.indexOf(start));
         return sequence;
     }
 
-    private PathSequenceAnalysis getAnalysis(String start){
+    private PathSequenceAnalysis getAnalysis(String start) {
         List<Vertex> sequence = sequenceMap.get(start);
         if (sequence == null)
             sequence = finder.getSequence(g.indexOf(start));

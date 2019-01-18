@@ -168,7 +168,7 @@ new FormModel {
 					"title": "景点信息维护"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-					name: "panel2"
+					name: "anlayzePanel"
 				}, new FormLayoutConstraints( null ) {
 					"title": "景点分析"
 				} )

@@ -16,20 +16,20 @@ public class ShortPathSearch {
         this.g = g;
     }
 
-    public String shortPath(String start, String end, ShortPath shortPath){
+    public String shortPath(String start, String end, ShortPath shortPath) {
         if (!isExist(start, end))
             throw new NoSuchElementException("输入的景点名称不存在");
         Stack<Vertex> path = shortPath.pathTo(start, end);
         return recover_path(path);
     }
 
-    private String recover_path(Stack<Vertex> path){
+    private String recover_path(Stack<Vertex> path) {
         if (path == null) return "无可用路径";
         int distance = 0;
         StringBuilder s = new StringBuilder();
         Vertex cur = path.pop();
         s.append(cur.getName()).append(" --> ");
-        while (!path.isEmpty()){
+        while (!path.isEmpty()) {
             Vertex w = path.pop();
             Edge e = g.getEdge(cur.getName(), w.getName());
             distance += e.distance();
@@ -42,10 +42,10 @@ public class ShortPathSearch {
         return String.format("推荐的路径：\n总路程： %d\n ", distance) + s.toString();
     }
 
-    private boolean isExist(String start, String end){
+    private boolean isExist(String start, String end) {
         Vertex a = g.getVertex(start);
         Vertex b = g.getVertex(end);
-        return ( a != null && b != null);
+        return (a != null && b != null);
     }
 
 }

@@ -17,7 +17,7 @@ import javax.swing.*;
  */
 public class Main extends JFrame {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Main m = new Main();
         m.setVisible(true);
     }
@@ -41,10 +41,10 @@ public class Main extends JFrame {
                 new JLabel("password"), password
         };
         JOptionPane.showConfirmDialog(null, inputs, "login", JOptionPane.PLAIN_MESSAGE);
-      //  if (account.getText().equals("20175377") && password.getText().equals("20175377")){
-            Admin a = new Admin(g);
-            a.setVisible(true);
-            this.dispose();
+        //  if (account.getText().equals("20175377") && password.getText().equals("20175377")){
+        Admin a = new Admin(g);
+        a.setVisible(true);
+        this.dispose();
         //}
     }
 
@@ -108,7 +108,7 @@ public class Main extends JFrame {
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panel1.getComponentCount(); i++) {
+                for (int i = 0; i < panel1.getComponentCount(); i++) {
                     Rectangle bounds = panel1.getComponent(i).getBounds();
                     preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                     preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

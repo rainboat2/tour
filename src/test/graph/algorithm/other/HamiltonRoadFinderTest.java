@@ -15,8 +15,8 @@ import java.util.List;
  * HamiltonRoadFinder Tester.
  *
  * @author <Authors name>
- * @since <pre> 18, 2019</pre>
  * @version 1.0
+ * @since <pre> 18, 2019</pre>
  */
 public class HamiltonRoadFinderTest {
 
@@ -34,9 +34,7 @@ public class HamiltonRoadFinderTest {
     }
 
     /**
-     *
      * Method: getSequence(int start)
-     *
      */
     @Test
     public void testGetSequence() throws Exception {
@@ -46,24 +44,20 @@ public class HamiltonRoadFinderTest {
     }
 
     /**
-     *
      * Method: hasHamiltonRoad(Graph g)
-     *
      */
     @Test
     public void testHasHamiltonRoad() throws Exception {
-    //TODO: Test goes here...
+        //TODO: Test goes here...
     }
 
 
     /**
-     *
      * Method: preOrder(int v)
-     *
      */
     @Test
     public void testPreOrder() throws Exception {
-    //TODO: Test goes here...
+        //TODO: Test goes here...
     /*
     try {
        Method method = HamiltonRoadFinder.getClass().getMethod("preOrder", int.class);
@@ -77,13 +71,11 @@ public class HamiltonRoadFinderTest {
     }
 
     /**
-     *
      * Method: getAdj(int v)
-     *
      */
     @Test
     public void testGetAdj() throws Exception {
-    //TODO: Test goes here...
+        //TODO: Test goes here...
     /*
     try {
        Method method = HamiltonRoadFinder.getClass().getMethod("getAdj", int.class);

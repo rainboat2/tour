@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 /**
  * GraphModify 封装边和节点的添加，删除和修改方法
  * 为GUI模块提供相关方法的接口
- *
+ * <p>
  * 通用流程：
  * 1. 根据所需的内容生成相应的对话框
  * 2. 从对话框中获取输入
@@ -20,7 +20,7 @@ public class GraphModify {
 
     private Graph g;
 
-    public GraphModify(Graph g){
+    public GraphModify(Graph g) {
         this.g = g;
     }
 
@@ -40,7 +40,7 @@ public class GraphModify {
         JOptionPane.showMessageDialog(null, "成功添加路径", "警告", JOptionPane.WARNING_MESSAGE);
     }
 
-    public void deleteEdge() throws NoSuchElementException{
+    public void deleteEdge() throws NoSuchElementException {
         JTextField start = new JTextField();
         JTextField end = new JTextField();
         final JComponent[] inputs = new JComponent[]{
@@ -56,14 +56,14 @@ public class GraphModify {
                 "提示", JOptionPane.WARNING_MESSAGE);
     }
 
-    public void deleteVertex(Vertex v) throws NoSuchElementException{
+    public void deleteVertex(Vertex v) throws NoSuchElementException {
         int rs = JOptionPane.showConfirmDialog(null, "确定删除选中节点", "警告", JOptionPane.YES_NO_OPTION);
         if (rs != JOptionPane.YES_OPTION) return;
         g.removeVertex(v.getName());
         JOptionPane.showMessageDialog(null, String.format("成功删除节点%s", v.getName()), "提示", JOptionPane.WARNING_MESSAGE);
     }
 
-    public void addVertex() throws RuntimeException{
+    public void addVertex() throws RuntimeException {
         String[] info = showDialog(new Vertex("", "暂无说明", 0, 0, 0, ""));
         int rs = JOptionPane.showConfirmDialog(null, "确认添加该景点信息？", "警告", JOptionPane.YES_NO_OPTION);
         if (rs != JOptionPane.YES_OPTION) return;
@@ -73,7 +73,7 @@ public class GraphModify {
         JOptionPane.showMessageDialog(null, "成功添加景点" + info[0]);
     }
 
-    public void modify(Vertex v) throws UnsupportedOperationException{
+    public void modify(Vertex v) throws UnsupportedOperationException {
         String[] info = showDialog(v);
         int rs = JOptionPane.showConfirmDialog(null, "确认修改信息？", "警告", JOptionPane.YES_NO_OPTION);
         if (rs == JOptionPane.NO_OPTION) return;
@@ -89,24 +89,24 @@ public class GraphModify {
     }
 
     // 添加节点信息和修改节点信息共用这一个对话框
-    private String[] showDialog(Vertex v){
+    private String[] showDialog(Vertex v) {
         //----------------------构建对话框--------------------------
         JFileChooser chooser = new JFileChooser(new File("img/default.png"));
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         JTextField name = new JTextField(v.getName());
-        JTextField restArea = new JTextField(v.getRestArea()+"");
-        JTextField toilet = new JTextField(v.getToilet()+"");
-        JTextField popular = new JTextField(v.getPopular()+"");
-        JTextArea description = new JTextArea(v.getDescription()+"");
+        JTextField restArea = new JTextField(v.getRestArea() + "");
+        JTextField toilet = new JTextField(v.getToilet() + "");
+        JTextField popular = new JTextField(v.getPopular() + "");
+        JTextArea description = new JTextArea(v.getDescription() + "");
         description.setAutoscrolls(true);
         description.setSize(300, 300);
         final JComponent[] inputs = new JComponent[]{
-                new JLabel("名称"),       name,
-                new JLabel("欢迎度"),     popular,
-                new JLabel("厕所数量"),   toilet,
+                new JLabel("名称"), name,
+                new JLabel("欢迎度"), popular,
+                new JLabel("厕所数量"), toilet,
                 new JLabel("休息区数量"), restArea,
-                new JLabel("简介"),       description,
-                new JLabel("图片"),       chooser
+                new JLabel("简介"), description,
+                new JLabel("图片"), chooser
         };
         JOptionPane.showConfirmDialog(null, inputs, "景点信息", JOptionPane.PLAIN_MESSAGE);
 
@@ -119,7 +119,7 @@ public class GraphModify {
         info[4] = description.getText();
         File f = chooser.getSelectedFile();
         if (f != null) info[5] = f.getPath();
-        else           info[5] = v.getImagePath();
+        else info[5] = v.getImagePath();
         return info;
     }
 

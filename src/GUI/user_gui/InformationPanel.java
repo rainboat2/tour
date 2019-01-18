@@ -32,7 +32,7 @@ public class InformationPanel extends JPanel {
         init();
     }
 
-    private void init(){
+    private void init() {
         vertexShow.setVisible(true);
         vertexShow.draw(g, null);
         showPanel.add(vertexShow);
@@ -41,14 +41,14 @@ public class InformationPanel extends JPanel {
         showNotification();
     }
 
-    private void showNotification(){
+    private void showNotification() {
         notifitionText.setText(notification.getNotification());
     }
 
     @SuppressWarnings("Duplicates")
     private void tableMouseClicked(MouseEvent e) {
         int row = table1.getSelectedRow();
-        String name = (String)table1.getValueAt(row, 0);
+        String name = (String) table1.getValueAt(row, 0);
         Vertex v = g.getVertex(name);
         vertexShow.draw(g, v);
     }
@@ -56,14 +56,14 @@ public class InformationPanel extends JPanel {
     private void searchMouseClicked(MouseEvent e) {
         String keyword = searchText.getText();
         verticesInTable = search_sort.search(keyword);
-        search_sort.sort((String)searchPattern.getSelectedItem(), verticesInTable);
+        search_sort.sort((String) searchPattern.getSelectedItem(), verticesInTable);
         showTable();
     }
 
     @SuppressWarnings("Duplicates")
-    private void showTable(){
+    private void showTable() {
         String[][] t = new String[verticesInTable.length][2];
-        for (int i = 0; i < verticesInTable.length; i++){
+        for (int i = 0; i < verticesInTable.length; i++) {
             t[i][0] = verticesInTable[i].getName();
             t[i][1] = verticesInTable[i].getDescription();
         }
@@ -74,7 +74,7 @@ public class InformationPanel extends JPanel {
 
     // 当用户选中下拉框的值时调用该方法，用于对数组重新排序
     private void searchPatternActionPerformed(ActionEvent e) {
-        search_sort.sort((String)searchPattern.getSelectedItem(), verticesInTable);
+        search_sort.sort((String) searchPattern.getSelectedItem(), verticesInTable);
         showTable();
     }
 
@@ -131,24 +131,26 @@ public class InformationPanel extends JPanel {
 
             //---- table1 ----
             table1.setModel(new DefaultTableModel(
-                new Object[][] {
-                    {null, null},
-                    {null, null},
-                },
-                new String[] {
-                    "\u666f\u70b9\u540d\u79f0", "\u666f\u70b9\u4ecb\u7ecd"
-                }
+                    new Object[][]{
+                            {null, null},
+                            {null, null},
+                    },
+                    new String[]{
+                            "\u666f\u70b9\u540d\u79f0", "\u666f\u70b9\u4ecb\u7ecd"
+                    }
             ) {
-                Class<?>[] columnTypes = new Class<?>[] {
-                    String.class, String.class
+                Class<?>[] columnTypes = new Class<?>[]{
+                        String.class, String.class
                 };
-                boolean[] columnEditable = new boolean[] {
-                    false, false
+                boolean[] columnEditable = new boolean[]{
+                        false, false
                 };
+
                 @Override
                 public Class<?> getColumnClass(int columnIndex) {
                     return columnTypes[columnIndex];
                 }
+
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return columnEditable[columnIndex];
@@ -187,11 +189,11 @@ public class InformationPanel extends JPanel {
         button1.setBounds(360, 130, 85, button1.getPreferredSize().height);
 
         //---- searchPattern ----
-        searchPattern.setModel(new DefaultComboBoxModel<>(new String[] {
-            "\u540d\u79f0",
-            "\u6b22\u8fce\u5ea6",
-            "\u4f11\u606f\u533a\u6570\u91cf",
-            "\u5395\u6240\u6570\u91cf"
+        searchPattern.setModel(new DefaultComboBoxModel<>(new String[]{
+                "\u540d\u79f0",
+                "\u6b22\u8fce\u5ea6",
+                "\u4f11\u606f\u533a\u6570\u91cf",
+                "\u5395\u6240\u6570\u91cf"
         }));
         searchPattern.addActionListener(e -> searchPatternActionPerformed(e));
         add(searchPattern);
@@ -233,7 +235,7 @@ public class InformationPanel extends JPanel {
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < getComponentCount(); i++) {
+            for (int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
