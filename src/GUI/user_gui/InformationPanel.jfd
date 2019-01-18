@@ -1,0 +1,143 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"background": new com.jformdesigner.model.SwingColor( "Button.background" )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "showPanel"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 545
+				"y": 0
+				"height": 605
+				"width": 335
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "景 点 信 息 查 询"
+				"font": new java.awt.Font( "微软雅黑", 0, 30 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 143
+				"y": 50
+				"width": 265
+				"height": 50
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "景点名称" )
+						add( "景点介绍" )
+					}, new java.util.Vector {
+						add( class java.lang.String )
+						add( class java.lang.String )
+					}, new java.util.Vector {
+						add( false )
+						add( false )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 90, 0, 0, false ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 140, 0, 0, false ) )
+					} )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tableMouseClicked", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 340
+				"height": 170
+				"x": 110
+				"y": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "searchText"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 110
+				"y": 132
+				"width": 213
+				"height": 25
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "查询"
+				"font": &Font0 new java.awt.Font( "微软雅黑", 0, 14 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "searchMouseClicked", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 360
+				"y": 130
+				"width": 85
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "searchPattern"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "名称"
+					addElement( "名称" )
+					addElement( "欢迎度" )
+					addElement( "休息区数量" )
+					addElement( "厕所数量" )
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchPatternActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 195
+				"y": 175
+				"width": 90
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "排序方式："
+				"font": &Font1 new java.awt.Font( "微软雅黑", 0, 14 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 110
+				"y": 173
+				"width": 77
+				"height": 25
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "最新通告："
+				"font": #Font1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 77
+				"height": 25
+				"x": 105
+				"y": 415
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "notifitionText"
+					"font": new java.awt.Font( "宋体", 0, 12 )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 105
+				"y": 445
+				"width": 340
+				"height": 95
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "历史通告"
+				"font": #Font0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "historyMouseClicked", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 94
+				"height": 29
+				"x": 354
+				"y": 410
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 60, 15 )
+			"size": new java.awt.Dimension( 880, 605 )
+		} )
+	}
+}
