@@ -11,7 +11,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * @author Brainrain
+ * 停车场管理系统
+ * 用于模拟汽车进场和出场信息并将其显示
  */
 public class Parking extends JPanel {
 
@@ -21,6 +22,10 @@ public class Parking extends JPanel {
         initComponents();
     }
 
+    /**
+     * 给定需要进场汽车的车牌号，给出模拟进场的信息
+     * @param e 事件监听信息
+     */
     private void inMouseClicked(MouseEvent e) {
         String license = licenseText.getText();
         licenseText.setText("");
@@ -28,6 +33,10 @@ public class Parking extends JPanel {
         information.append(info);
     }
 
+    /**
+     * 给定需要进场的汽车车牌，给出模拟出场的信息
+     * @param e 事件监听对象
+     */
     private void outMouseClicked(MouseEvent e) {
         String license = licenseText.getText();
         String info = parkingSystem.leave(license);
@@ -86,6 +95,9 @@ public class Parking extends JPanel {
 
         //======== scrollPane1 ========
         {
+
+            //---- information ----
+            information.setFont(new Font("\u5b8b\u4f53", Font.PLAIN, 12));
             scrollPane1.setViewportView(information);
         }
         add(scrollPane1);
@@ -105,7 +117,7 @@ public class Parking extends JPanel {
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
+            for(int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

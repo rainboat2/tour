@@ -10,17 +10,22 @@ import java.util.*;
 
 /**
  * 接受图以及一组节点序列
- * <p>
+ *
  * 功能：
  * 1. 缺失路径分析
- * 2. 自动填补路径生成导游图
+ * 2. 自动填补序列生成完整路径
+ *
  */
-public class PathSequenceAnalysis {
+public class PathSequenceAnalyser {
 
     private Graph g;
-    private List<Vertex> sequence;    //记录用于分析的节点序列
-    private List<Node> missPath;
+    private List<Node> missPath;            // 记录缺少的路径
+    private final List<Vertex> sequence;    // 记录用于分析的节点序列
 
+    /**
+     * 若节点序列中两个相邻的节点之间不存在直接相连的边时，使用该类来保存
+     * 保存两个节点之间的一个最短路径
+     */
     private class Node {
         int start;
         int end;
@@ -33,40 +38,28 @@ public class PathSequenceAnalysis {
             setPath(path);
         }
 
-        // 将最短路径算法生成的路径栈转化为路径数组
+        /*
+         * 将最短路径算法生成的路径栈转化为路径数组
+         * 便于后面的计算
+         */
         private void setPath(Stack<Vertex> stack) {
+            if (stack == null)
+                throw new RuntimeException("错误的节点序列：节点不连通");
             path = new ArrayList<>(stack.size());
             while (!stack.isEmpty())
                 path.add(stack.pop());
         }
     }
 
-    public PathSequenceAnalysis(Graph g, List<Vertex> sequence) {
+    public PathSequenceAnalyser(Graph g, List<Vertex> sequence) {
         this.g = g;
         this.sequence = sequence;
         this.missPath = new LinkedList<>();
     }
 
-    public String showTourPath() {
-        List<Vertex> path = getTourPath();
-        StringBuilder s = new StringBuilder();
-        Iterator<Vertex> it = path.iterator();
-
-        int distance = 0;
-        Vertex cur = it.next();
-        while (it.hasNext()) {
-            Vertex next = it.next();
-            Edge e = g.getEdge(cur, next);
-            distance += e.distance();
-            s.append(cur.getName());
-            if (it.hasNext())
-                s.append("-->");
-            cur = next;
-        }
-        s.append(String.format("\n总距离:%d, 预计耗费时间%d小时", distance, distance / 24));
-        return s.toString();
-    }
-
+    /**
+     * @return 所给序列中，所有无法直接到达的相连节点对
+     */
     public String getMissPathAnalyzeResult() {
         missPathAnalyze(new Dijkstra(g));
         StringBuilder s = new StringBuilder();
@@ -75,30 +68,13 @@ public class PathSequenceAnalysis {
         return s.toString();
     }
 
-    /*
-     * 通过遍历序列，找到所有直接不可达的节点对
-     *
-     * 并且使用最短路径算法对缺少的路径进行填补
-     * 通过传入不同的最短路径算法，可以使用不同方式进行填补
-     */
-    private void missPathAnalyze(ShortPath shortPath) {
-        for (int i = 0; i < sequence.size() - 1; i++) {
-            Vertex a = sequence.get(i);
-            Vertex b = sequence.get(i + 1);
-            Edge e = g.getEdge(a, b);
-            if (e == null)
-                missPath.add(new Node(i, i + 1, shortPath.pathTo(a.getName(), b.getName())));
-        }
-    }
 
-
-    /*
-     * 通过遍历sequence，路径存在，直接加入导游路径序列
-     * 路径不存在，则将找到的最短路径添加进去
-     *
-     * 当 n == null 时  i，i+1两个节点之间有直接回路
+    /**
+     *  通过遍历sequence，路径存在，直接加入导游路径序列
+     *  路径不存在，则将找到的最短路径添加进去
+     * @return 导游路径
      */
-    private List<Vertex> getTourPath() {
+    public List<Vertex> getTourPath() {
         missPathAnalyze(new Dijkstra(g));
         List<Vertex> tourPath = new LinkedList<>();
         for (int i = 0; i < sequence.size(); i++) {
@@ -114,9 +90,32 @@ public class PathSequenceAnalysis {
         return tourPath;
     }
 
-    /*
-     * 调用该方法前必需要先调用missPathAnalyze方法
+    /**
+     * @return 用于分析的节点序列
+     */
+    public Iterable<Vertex> getSequence(){
+        return sequence;
+    }
+
+    /**
+     * 通过遍历序列，找到所有直接不可达的节点对
      *
+     * 并且使用最短路径算法对缺少的路径进行填补
+     * 通过传入不同的最短路径算法，可以使用不同方式进行填补
+     */
+    private void missPathAnalyze(ShortPath shortPath) {
+        for (int i = 0; i < sequence.size() - 1; i++) {
+            Vertex a = sequence.get(i);
+            Vertex b = sequence.get(i + 1);
+            Edge e = g.getEdge(a, b);
+            if (e == null)
+                missPath.add(new Node(i, i + 1, shortPath.pathTo(a.getName(), b.getName())));
+        }
+    }
+
+    /**
+     * 调用该方法前必需要先调用missPathAnalyze方法
+     * 用于确定给定节点start和其后的一个节点之间是否存在直接到达的边
      *
      * @param start 开始节点在sequence中的索引
      * @return node   start，start+1之间不存在直接到到的边

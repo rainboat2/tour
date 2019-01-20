@@ -10,10 +10,10 @@ new FormModel {
 				name: "showPanel"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 545
+				"x": 565
 				"y": 0
-				"height": 605
-				"width": 335
+				"height": 615
+				"width": 345
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -121,8 +121,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 105
 				"y": 445
-				"width": 340
-				"height": 95
+				"width": 345
+				"height": 105
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
@@ -136,8 +136,8 @@ new FormModel {
 				"y": 410
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 60, 15 )
-			"size": new java.awt.Dimension( 880, 605 )
+			"location": new java.awt.Point( 60, 10 )
+			"size": new java.awt.Dimension( 910, 610 )
 		} )
 	}
 }

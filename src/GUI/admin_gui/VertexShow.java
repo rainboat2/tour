@@ -50,13 +50,17 @@ public class VertexShow extends JPanel {
         adjecent.setText(s.toString());
     }
 
+    /**
+     * 根据图片路径获取图片对象，改变图片的大小，并将图片设置到显示面板
+     * @param path 图片路径
+     */
     private void setImage(String path) {
         File f = new File(path);
         ImageIcon image;
         if (f.exists()) image = new ImageIcon(path);
-        else image = new ImageIcon("img/default.png");
+        else image = new ImageIcon("img/default.jpg");
         Image img = image.getImage();
-        img = img.getScaledInstance(400, 160, Image.SCALE_DEFAULT);
+        img = img.getScaledInstance(370, 160, Image.SCALE_DEFAULT);
         image.setImage(img);
         imageLabel.setIcon(image);
     }
@@ -90,7 +94,7 @@ public class VertexShow extends JPanel {
         //---- imageLabel ----
         imageLabel.setIcon(new ImageIcon("D:\\workplace\\tour\\img\\temp.jpg"));
         add(imageLabel);
-        imageLabel.setBounds(0, 0, 400, 160);
+        imageLabel.setBounds(0, 0, 370, 160);
 
         //---- name ----
         name.setText("\u666f\u70b9\u540d\u79f0");
@@ -159,11 +163,11 @@ public class VertexShow extends JPanel {
             scrollPane1.setViewportView(describe);
         }
         add(scrollPane1);
-        scrollPane1.setBounds(70, 375, 245, 105);
+        scrollPane1.setBounds(70, 375, 245, 145);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
+            for(int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Wed Jan 16 13:51:21 CST 2019
- */
-
 package GUI;
 
 import GUI.admin_gui.Admin;
@@ -13,7 +9,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * @author unknown
+ * 本类为整个项目的入口
+ * 运行本类的main函数，即出现登陆界面
  */
 public class Main extends JFrame {
 
@@ -22,17 +19,35 @@ public class Main extends JFrame {
         m.setVisible(true);
     }
 
-    private Graph g = Graph.getGraph();
+    private Graph g;
 
     public Main() {
+        loadGraph();
         initComponents();
+    }
+
+    /**
+     * 将图从文本文件中读取出来
+     */
+    private void loadGraph(){
+        try{
+            g = Graph.getGraph();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "数据文件损坏，程序初始化失败", "错误", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
     }
 
     private void createUIComponents() {
         // TODO: addVertex custom component creation code here
     }
 
-    @SuppressWarnings("deprecation")
+    /**
+     * 本方法在按钮 游客登陆 被按下时触发
+     * 若输入正确的用户名和密码，则销毁当前窗口，进入管理员界面
+     *
+     * @param e 事件监听对象，
+     */
     private void adminMouseClicked(MouseEvent e) {
         JTextField account = new JTextField();
         JPasswordField password = new JPasswordField();
@@ -41,13 +56,21 @@ public class Main extends JFrame {
                 new JLabel("password"), password
         };
         JOptionPane.showConfirmDialog(null, inputs, "login", JOptionPane.PLAIN_MESSAGE);
-        //  if (account.getText().equals("20175377") && password.getText().equals("20175377")){
-        Admin a = new Admin(g);
-        a.setVisible(true);
-        this.dispose();
-        //}
+        if (account.getText().equals("20175377") && password.getText().equals("20175377")){
+            Admin a = new Admin(g);
+            a.setVisible(true);
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(null, "用户名或密码输入错误");
+        }
     }
 
+    /**
+     * 本方法在按钮 游客登陆 被按下时触发
+     * 销毁当前窗口，生成游客界面
+     *
+     * @param e 事件监听对象，
+     */
     private void visitorMouseClicked(MouseEvent e) {
         User user = new User(g);
         user.setVisible(true);

@@ -2,6 +2,7 @@ package graph;
 
 public class Vertex {
 
+
     private String name;
     private String description;
     private int popular;
@@ -18,8 +19,13 @@ public class Vertex {
         this.imagePath = imagePath;
     }
 
+    /**
+     * 通过info中的信息以生成一个Vertex对象
+     * @param info  {name, popular, toilet, restArea, description, imagePath}
+     * @throws IndexOutOfBoundsException 当传入的info数组长度不够的时候会产生该异常
+     */
     public Vertex(String[] info) {
-        setName(info[0]);
+        this.name = info[0];
         setPopular(info[1]);
         setToilet(info[2]);
         setRestArea(info[3]);
@@ -27,15 +33,22 @@ public class Vertex {
         setImagePath(info[5]);
     }
 
-    public boolean isContains(String pattern) {
-        return name.contains(pattern) || description.contains(pattern);
+    /**
+     * 判断本节点的名称或描述中是否包含传入的关键字
+     * @param keyWork 关键字
+     * @return true  匹配到关键字
+     *         false 未匹配到关键字
+     */
+    public boolean isContains(String keyWork) {
+        return name.contains(keyWork) || description.contains(keyWork);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    // 图通过名称来查找结点索引，随意修改名称会导致错误
+    void setName(String name){
         this.name = name;
     }
 
@@ -78,9 +91,17 @@ public class Vertex {
     }
 
     public void setImagePath(String imagePath) {
+        if (imagePath.equals(""))
+            imagePath = "img\\default.jpg";
         this.imagePath = imagePath;
     }
 
+    /**
+     * 将字符串转化为数字，
+     * 若是不可转化的字符串，则将其设置为0
+     * @param s 需要转为数字的字符串
+     * @return 转化的结果
+     */
     private int getNumber(String s) {
         int number;
         try {

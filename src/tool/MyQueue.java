@@ -2,6 +2,10 @@ package tool;
 
 import java.util.NoSuchElementException;
 
+/**
+ * 自定义的队列（链表实现）
+ * @param <Type> 需要放入队列中的元素的类型
+ */
 public class MyQueue<Type> {
 
     private Node first;
@@ -21,6 +25,9 @@ public class MyQueue<Type> {
         clear();
     }
 
+    /**
+     * 清空队列中的所有元素
+     */
     public void clear() {
         first = rear = new Node(null, null);
     }
@@ -29,12 +36,18 @@ public class MyQueue<Type> {
         return first == rear;
     }
 
-
+    /**
+     * 将一个元素加入到队列中
+     * @param element 需要加入队列的元素
+     */
     public void enQueue(Type element) {
         rear.next = new Node(element, null);
         rear = rear.next;
     }
 
+    /**
+     * @return 队首的元素
+     */
     public Type deQueue() {
         if (isEmpty())
             throw new NoSuchElementException();

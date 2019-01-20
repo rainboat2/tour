@@ -10,11 +10,12 @@ import java.util.NoSuchElementException;
 /**
  * GraphModify 封装边和节点的添加，删除和修改方法
  * 为GUI模块提供相关方法的接口
- * <p>
+ *
  * 通用流程：
  * 1. 根据所需的内容生成相应的对话框
  * 2. 从对话框中获取输入
- * 3. 向用户确认信息，并根据用户回答（yes/no）来确定是否执行相应操作
+ * 3. 向用户确认信息，并根据用户回答（yes/no）来确定是否执行下一步
+ * 4. 调用图中方法执行操作
  */
 public class GraphModify {
 
@@ -24,6 +25,13 @@ public class GraphModify {
         this.g = g;
     }
 
+    /**
+     * 弹出对话框，获取用户的输入（起点，终点，距离）
+     * 根据这三个参数向图中添加一条边
+     *
+     * @throws NumberFormatException 用户输入的距离无法转化为一个数
+     * @throws NoSuchElementException 输入了图中不存在的结点
+     */
     public void addEdge() throws NumberFormatException, NoSuchElementException {
         JTextField start = new JTextField();
         JTextField end = new JTextField();
@@ -40,6 +48,12 @@ public class GraphModify {
         JOptionPane.showMessageDialog(null, "成功添加路径", "警告", JOptionPane.WARNING_MESSAGE);
     }
 
+    /**
+     * 弹出对话框，获取用户输入（起点，终点）
+     * 根据这两个输入删除图中的一条边
+     *
+     * @throws NoSuchElementException 用户的输入了图中不存在的结点
+     */
     public void deleteEdge() throws NoSuchElementException {
         JTextField start = new JTextField();
         JTextField end = new JTextField();
@@ -51,20 +65,34 @@ public class GraphModify {
 
         int rs = JOptionPane.showConfirmDialog(null, "确认删除该路径信息？", "警告", JOptionPane.YES_NO_OPTION);
         if (rs == JOptionPane.NO_OPTION) return;
-        g.removeEdge(start.getText(), end.getText());
+        g.removeEdge(start.getText(), end.getText());  //调用g的相关方法以删除节点
         JOptionPane.showMessageDialog(null, String.format("成功删除从%s到%s的路径", start.getText(), end.getText()),
                 "提示", JOptionPane.WARNING_MESSAGE);
     }
 
-    public void deleteVertex(Vertex v) throws NoSuchElementException {
+    /**
+     * 传入一个结点名称，在图中找到并且删除该节点
+     * @param v 需要删除的结点对象
+     * @throws NoSuchElementException 图中不存在指定的结点
+     */
+    public void deleteVertex(String name) throws NoSuchElementException {
+        Vertex v = g.getVertex(name);
+        if (v == null)
+            throw new NoSuchElementException("找不到要删除的结点");
         int rs = JOptionPane.showConfirmDialog(null, "确定删除选中节点", "警告", JOptionPane.YES_NO_OPTION);
         if (rs != JOptionPane.YES_OPTION) return;
         g.removeVertex(v.getName());
         JOptionPane.showMessageDialog(null, String.format("成功删除节点%s", v.getName()), "提示", JOptionPane.WARNING_MESSAGE);
     }
 
+    /**
+     * 弹出对话框，要求用户输入需要创建的结点的信息，
+     * 创建对象并添加到图中
+     * @throws RuntimeException 输入的景点名字为空
+     */
     public void addVertex() throws RuntimeException {
         String[] info = showDialog(new Vertex("", "暂无说明", 0, 0, 0, ""));
+        if (info == null) return;
         int rs = JOptionPane.showConfirmDialog(null, "确认添加该景点信息？", "警告", JOptionPane.YES_NO_OPTION);
         if (rs != JOptionPane.YES_OPTION) return;
         if (info[0].equals(""))
@@ -73,14 +101,19 @@ public class GraphModify {
         JOptionPane.showMessageDialog(null, "成功添加景点" + info[0]);
     }
 
-    public void modify(Vertex v) throws UnsupportedOperationException {
+    /**
+     * 弹出对话框，用户输入修改的景点的信息，获取输入并对结点信息进行修改
+     * 注意：修改结点名称必须要调用 Graph中的 renameVertex方法来执行
+     * @param name 需要修改信息的结点名称
+     */
+    public void modify(String name) {
+        Vertex v = g.getVertex(name);
         String[] info = showDialog(v);
+        if (info == null) return;
         int rs = JOptionPane.showConfirmDialog(null, "确认修改信息？", "警告", JOptionPane.YES_NO_OPTION);
-        if (rs == JOptionPane.NO_OPTION) return;
-        Vertex w = g.getVertex(info[0]);
-        if (v != w)
-            throw new UnsupportedOperationException("添加失败，节点的名字不能重复");
-        v.setName(info[0]);
+        if (rs != JOptionPane.YES_OPTION) return;
+        //info[] = {name, popular, toilet, restArea, description, imagePath}
+        g.renameVertex(v, info[0]);
         v.setPopular(info[1]);
         v.setToilet(info[2]);
         v.setRestArea(info[3]);
@@ -88,17 +121,22 @@ public class GraphModify {
         v.setImagePath(info[5]);
     }
 
-    // 添加节点信息和修改节点信息共用这一个对话框
+    /**
+     * 调用该函数会显示一个修改景点信息的对话框
+     * @return {name, popular, toilet, restArea, description, imagePath}
+     */
     private String[] showDialog(Vertex v) {
         //----------------------构建对话框--------------------------
-        JFileChooser chooser = new JFileChooser(new File("img/default.png"));
+        JFileChooser chooser = new JFileChooser(new File("img/default.jpg"));
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         JTextField name = new JTextField(v.getName());
         JTextField restArea = new JTextField(v.getRestArea() + "");
         JTextField toilet = new JTextField(v.getToilet() + "");
         JTextField popular = new JTextField(v.getPopular() + "");
-        JTextArea description = new JTextArea(v.getDescription() + "");
+        JTextArea description = new JTextArea(4, 20);
+        description.setText(v.getDescription());
         description.setAutoscrolls(true);
+        description.setLineWrap(true);
         description.setSize(300, 300);
         final JComponent[] inputs = new JComponent[]{
                 new JLabel("名称"), name,
@@ -108,9 +146,11 @@ public class GraphModify {
                 new JLabel("简介"), description,
                 new JLabel("图片"), chooser
         };
-        JOptionPane.showConfirmDialog(null, inputs, "景点信息", JOptionPane.PLAIN_MESSAGE);
-
+        int rs = JOptionPane.showConfirmDialog(null, inputs, "景点信息", JOptionPane.YES_NO_OPTION);
+        if (rs != JOptionPane.YES_OPTION)
+            return null;
         //----------------------从对话框中获取输入值--------------------------
+        // info[] = {name, popular, toilet, restArea, description, imagePath}
         String[] info = new String[6];
         info[0] = name.getText();
         info[1] = popular.getText();

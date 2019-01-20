@@ -1,35 +1,17 @@
 package tool;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class Sort<Type> {
 
-    public static void main(String[] args) {
-        Sort<Integer> sort = new Sort<>();
-        Integer[] a = new Integer[14];
-        for (int i = 0; i < a.length; i++)
-            a[i] = (int) (Math.random() * 100);
-        sort.quick(a, Comparator.comparingInt(o -> o));
-        System.out.println(Arrays.toString(a));
-    }
-
+    // 指定排序的比较方式，在调用排序算法时传入
     private Comparator<Type> comparator;
 
-    public void insert(Type[] a, Comparator<Type> c) {
-        for (int i = 1; i < a.length; i++) {
-            Type temp = a[i];
-            for (int j = i; j >= 0; j--) {
-                if (j - 1 >= 0 && c.compare(a[j - 1], temp) >= 0) {
-                    a[j] = a[j - 1];
-                } else {
-                    a[j] = temp;
-                    break;
-                }
-            }
-        }
-    }
-
+    /**
+     * 快速排序
+     * @param a 用于排序的数组
+     * @param c 指定比较方式的Comparator
+     */
     public void quick(Type[] a, Comparator<Type> c) {
         comparator = c;
         quick(a, 0, a.length - 1);

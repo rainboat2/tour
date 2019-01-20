@@ -35,7 +35,7 @@ new FormModel {
 				"height": 30
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "UnionCount"
+				name: "unionCount"
 				"text": "未知"
 				"font": new java.awt.Font( "微软雅黑", 0, 14 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -99,15 +99,16 @@ new FormModel {
 				"text": "未知"
 				"font": #Font0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 70
+				"width": 119
 				"height": 30
 				"x": 771
 				"y": 122
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "flush"
+				name: "flushButton"
 				"text": "刷新信息"
 				"font": &Font1 new java.awt.Font( "微软雅黑", 0, 14 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "flushButtonMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 110
 				"y": 177
@@ -118,6 +119,7 @@ new FormModel {
 				name: "matrix"
 				"text": "邻接矩阵"
 				"font": #Font1
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "matrixMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 120
 				"height": 30
@@ -148,22 +150,42 @@ new FormModel {
 				name: "tourAnalyze"
 				"text": "开始分析"
 				"font": #Font1
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tourAnalyzeMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 115
 				"height": 30
-				"x": 110
-				"y": 300
+				"x": 365
+				"y": 301
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea1"
+					name: "resultArea"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 110
 				"y": 350
-				"width": 370
+				"width": 840
 				"height": 235
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "tourStart"
+				"font": new java.awt.Font( "微软雅黑", 0, 14 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 180
+				"y": 304
+				"width": 145
+				"height": 25
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "起点："
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 50
+				"height": 30
+				"x": 115
+				"y": 300
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 10, 0 )

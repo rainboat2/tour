@@ -7,16 +7,13 @@ package GUI.user_gui;
 import java.awt.event.*;
 
 import graph.Graph;
-import graph.algorithm.other.HamiltonRoadFinder;
+import graph.algorithm.other.UnionFind;
 import graph.algorithm.short_path.Dijkstra;
 import graph.algorithm.small_tree.Prim;
-import graph.algorithm.small_tree.Small_Tree;
 import tour.ShortPathSearch;
-import graph.algorithm.other.PathSequenceAnalysis;
 import tour.TourPath;
 
 import java.awt.*;
-import java.util.NoSuchElementException;
 import javax.swing.*;
 
 /**
@@ -27,23 +24,29 @@ public class PathPanel extends JPanel {
     private Graph g;
     private ShortPathSearch shortPathSearch;
     private TourPath tourPath;
+    private UnionFind uf;
 
     public PathPanel(Graph g) {
         this.g = g;
+        uf = new UnionFind(g);
         shortPathSearch = new ShortPathSearch(g);
-        tourPath = new TourPath(g, new Prim(g, 0));
+        tourPath = new TourPath(g);
         initComponents();
     }
 
     private void searchTourMouseClicked(MouseEvent e) {
         try {
+            if (uf.count() != 1)
+                JOptionPane.showMessageDialog(null, "检测到部分路径不可达，本次规划路径仅包括可达节点");
             String start = tourStart.getText();
-            String path = tourPath.getTourPath(start);
+            String path = tourPath.tourPath(start);
             resultArea.setText(path);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
+
+
 
     private void shortPathButtonMouseClicked(MouseEvent e) {
         try {

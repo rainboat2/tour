@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * 1. 最小生成树 ：用于生成汉密尔顿回路序列
  * 2. 原图      ：用于根据一个节点序列生成一组路径
  * 3. 起点
- * <p>
+ *
  * 提供的功能：
  * 1.生成近似路径序列
  */
@@ -19,7 +19,7 @@ public class HamiltonRoadFinder {
 
     private Graph subTree;                    //由最小生成树算法得到的一个最小生成树
     private ArrayList<Vertex> path;           //存放求得的路径序列
-    private boolean[] marked;
+    private boolean[] marked;                 //标记节点是否访问过
 
     public HamiltonRoadFinder(Graph subTree) {
         this.subTree = subTree;
@@ -37,7 +37,8 @@ public class HamiltonRoadFinder {
         return path;
     }
 
-    /*
+    /**
+     *
      * 根据最小生成树进行先序遍历得到一组近似的路径序列
      */
     private void preOrder(int v) {
@@ -53,7 +54,7 @@ public class HamiltonRoadFinder {
         return subTree.getAdjacentVertex(v);
     }
 
-    /*
+    /**
      * 判断汉密尔顿回路是否存在
      *
      * 判定定理（仅为充分条件）：

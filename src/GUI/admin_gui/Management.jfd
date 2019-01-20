@@ -1,0 +1,159 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "景点信息维护"
+					"font": new java.awt.Font( "微软雅黑", 0, 30 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 210
+					"height": 65
+					"x": 220
+					"y": 23
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "searchTextField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 165
+					"height": 25
+					"x": 160
+					"y": 113
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "查找"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "searchMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 80
+					"height": 30
+					"x": 385
+					"y": 108
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "修改景点"
+					"font": &Font0 new java.awt.Font( "微软雅黑", 0, 14 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "modifyMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 125
+					"height": 30
+					"x": 175
+					"y": 378
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button7"
+					"text": "删除景点"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "deleteMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 125
+					"height": 30
+					"x": 175
+					"y": 448
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "删除路径"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "deleteEdgeMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 125
+					"height": 30
+					"x": 175
+					"y": 513
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button6"
+					"text": "发布通告"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "notificationMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 125
+					"height": 30
+					"x": 345
+					"y": 513
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button5"
+					"text": "添加路径"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addEdgeMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 125
+					"height": 30
+					"x": 345
+					"y": 448
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button4"
+					"text": "添加景点"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 125
+					"height": 30
+					"x": 345
+					"y": 378
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "table1"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "景点名称" )
+							add( "景点介绍" )
+						}, new java.util.Vector {
+							add( class java.lang.String )
+							add( class java.lang.String )
+						}, new java.util.Vector {
+							add( false )
+							add( false )
+						}, new java.util.Vector {
+							add( new com.jformdesigner.model.SwingTableColumn( null, 90, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 140, 0, 0, false ) )
+						} )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tableMouseClicked", true ) )
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 340
+					"height": 170
+					"x": 150
+					"y": 170
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"height": 605
+				"width": 680
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "showPanel"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 680
+				"y": 0
+				"height": 605
+				"width": 375
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1055, 605 )
+		} )
+	}
+}

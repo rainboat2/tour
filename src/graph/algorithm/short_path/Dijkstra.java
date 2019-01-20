@@ -8,21 +8,6 @@ import java.util.Stack;
 
 public class Dijkstra implements ShortPath {
 
-    // 测试代码，查找每一对节点
-    public static void main(String[] args) {
-        Graph g = Graph.getGraph();
-        Dijkstra d = new Dijkstra(Graph.getGraph());
-        int N = g.size();
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.printf("from %s to %s\n", g.getVertex(i).getName(), g.getVertex(j).getName());
-                Stack<Vertex> stack = d.pathTo(g.getVertex(i).getName(), g.getVertex(j).getName());
-                while (!stack.isEmpty())
-                    System.out.println(stack.pop().getName());
-            }
-        }
-    }
-
     private Graph g;
     private int[] pathTo;
     private int[] distance;
@@ -36,6 +21,7 @@ public class Dijkstra implements ShortPath {
         cal_route(from, to);
         if (distance[to] == Integer.MAX_VALUE) return null;  //end不可达，无路径可以返回
         Stack<Vertex> stack = new Stack<>();
+        // 将找到的最短路径压入栈中进行保存
         int i;
         for (i = to; i != pathTo[i]; i = pathTo[i])
             stack.push(g.getVertex(i));

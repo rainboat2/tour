@@ -3,17 +3,25 @@ package tool;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * 自定义的，固定容量的栈
+ * @param <Type> 栈中保存的元素的类型
+ */
 public class MyStack<Type> {
 
-    public static final int MAX_CAPACITY = 5;
+    public static final int Default_CAPACITY = 5;
 
     private Type[] a;
-    private int size;
+    private int size;    //记录加入栈中的元素的个数
 
     public MyStack() {
-        this(MAX_CAPACITY);
+        this(Default_CAPACITY);
     }
 
+    /**
+     * 按照指定的容量初始化栈
+     * @param size 栈的最大容量
+     */
     public MyStack(int size) {
         a = (Type[]) new Object[size];
     }

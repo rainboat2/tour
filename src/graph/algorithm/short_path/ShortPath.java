@@ -12,8 +12,8 @@ public interface ShortPath {
      *
      * @param start 起点
      * @param end   终点
-     * @return null   最短路径序列不存在
-     * Stack  保存最短路径的栈
+     * @return  最短路径序列
+
      */
     Stack<Vertex> pathTo(String start, String end);
 }

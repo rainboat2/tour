@@ -15,6 +15,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
+/**
+ * 本类为用户查找景点信息的GUI
+ * 包括功能：
+ * 1. 景点查找与排序
+ * 2. 查看通告
+ * 3. 景点信息展示
+ */
 public class InformationPanel extends JPanel {
 
     private Graph g;
@@ -32,8 +39,13 @@ public class InformationPanel extends JPanel {
         init();
     }
 
+    /**
+     * 初始化显示，将以下信息添加到面板中
+     * 1. 所有的节点（添加到表格）
+     * 2. 显示最新通告
+     * 3. 右侧节点展示面板
+     */
     private void init() {
-        vertexShow.setVisible(true);
         vertexShow.draw(g, null);
         showPanel.add(vertexShow);
         verticesInTable = search_sort.search("");
@@ -41,10 +53,18 @@ public class InformationPanel extends JPanel {
         showNotification();
     }
 
+    /**
+     * 显示最新通告
+     */
     private void showNotification() {
         notifitionText.setText(notification.getNotification());
     }
 
+    /**
+     * 当表格中有节点被选中时触发该函数
+     * 将选中的节点在右侧的显示面板中显示出来
+     * @param e 事件监听对象
+     */
     @SuppressWarnings("Duplicates")
     private void tableMouseClicked(MouseEvent e) {
         int row = table1.getSelectedRow();
@@ -53,6 +73,12 @@ public class InformationPanel extends JPanel {
         vertexShow.draw(g, v);
     }
 
+    /**
+     * 点击搜索按钮时触发该函数，会按照指定的关键词获取所需所有匹配的节点，
+     * 并且将其显示在表格中
+     *
+     * @param e 事件监听对象
+     */
     private void searchMouseClicked(MouseEvent e) {
         String keyword = searchText.getText();
         verticesInTable = search_sort.search(keyword);
@@ -60,6 +86,9 @@ public class InformationPanel extends JPanel {
         showTable();
     }
 
+    /**
+     * 将vertices属性中保存的所有节点显示在表格中
+     */
     @SuppressWarnings("Duplicates")
     private void showTable() {
         String[][] t = new String[verticesInTable.length][2];
@@ -78,11 +107,16 @@ public class InformationPanel extends JPanel {
         showTable();
     }
 
+    /**
+     * 该方法用来创建一个弹出显示所有的历史通告
+     * @param e 事件监听对象
+     */
     private void historyMouseClicked(MouseEvent e) {
         Iterable<String> it = notification.getHistory();
         StringBuilder s = new StringBuilder();
         for (String line : it)
             s.append(line).append("\n");
+        // 创建对话框并显示历史通告
         JTextArea history = new JTextArea(20, 40);
         history.setText(s.toString());
         history.setEditable(false);
@@ -118,7 +152,7 @@ public class InformationPanel extends JPanel {
             showPanel.setLayout(new GridLayout());
         }
         add(showPanel);
-        showPanel.setBounds(545, 0, 335, 605);
+        showPanel.setBounds(565, 0, 345, 615);
 
         //---- label1 ----
         label1.setText("\u666f \u70b9 \u4fe1 \u606f \u67e5 \u8be2");
@@ -131,26 +165,24 @@ public class InformationPanel extends JPanel {
 
             //---- table1 ----
             table1.setModel(new DefaultTableModel(
-                    new Object[][]{
-                            {null, null},
-                            {null, null},
-                    },
-                    new String[]{
-                            "\u666f\u70b9\u540d\u79f0", "\u666f\u70b9\u4ecb\u7ecd"
-                    }
+                new Object[][] {
+                    {null, null},
+                    {null, null},
+                },
+                new String[] {
+                    "\u666f\u70b9\u540d\u79f0", "\u666f\u70b9\u4ecb\u7ecd"
+                }
             ) {
-                Class<?>[] columnTypes = new Class<?>[]{
-                        String.class, String.class
+                Class<?>[] columnTypes = new Class<?>[] {
+                    String.class, String.class
                 };
-                boolean[] columnEditable = new boolean[]{
-                        false, false
+                boolean[] columnEditable = new boolean[] {
+                    false, false
                 };
-
                 @Override
                 public Class<?> getColumnClass(int columnIndex) {
                     return columnTypes[columnIndex];
                 }
-
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return columnEditable[columnIndex];
@@ -189,11 +221,11 @@ public class InformationPanel extends JPanel {
         button1.setBounds(360, 130, 85, button1.getPreferredSize().height);
 
         //---- searchPattern ----
-        searchPattern.setModel(new DefaultComboBoxModel<>(new String[]{
-                "\u540d\u79f0",
-                "\u6b22\u8fce\u5ea6",
-                "\u4f11\u606f\u533a\u6570\u91cf",
-                "\u5395\u6240\u6570\u91cf"
+        searchPattern.setModel(new DefaultComboBoxModel<>(new String[] {
+            "\u540d\u79f0",
+            "\u6b22\u8fce\u5ea6",
+            "\u4f11\u606f\u533a\u6570\u91cf",
+            "\u5395\u6240\u6570\u91cf"
         }));
         searchPattern.addActionListener(e -> searchPatternActionPerformed(e));
         add(searchPattern);
@@ -219,7 +251,7 @@ public class InformationPanel extends JPanel {
             scrollPane2.setViewportView(notifitionText);
         }
         add(scrollPane2);
-        scrollPane2.setBounds(105, 445, 340, 95);
+        scrollPane2.setBounds(105, 445, 345, 105);
 
         //---- button2 ----
         button2.setText("\u5386\u53f2\u901a\u544a");
@@ -235,7 +267,7 @@ public class InformationPanel extends JPanel {
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
+            for(int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

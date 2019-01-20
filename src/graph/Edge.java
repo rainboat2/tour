@@ -25,12 +25,12 @@ public class Edge implements Comparable<Edge> {
 
     /**
      * @param s 边对应的两个节点中的任意一个
-     * @return 同于给定节点的
+     * @return 不同与给定节点的另外一个节点
      */
     public Vertex other(Vertex s) {
         if (s.equals(v)) return w;
         else if (s.equals(w)) return v;
-        else throw new RuntimeException("inconsistent edge");
+        else throw new RuntimeException("该边中不存在该节点");
     }
 
     public int compareTo(Edge that) {

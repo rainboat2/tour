@@ -12,12 +12,13 @@ import graph.Graph;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * 本类为用户界面的框架，本身不包括任何功能，仅作为其他功能面板的容器
+ *
+ */
 public class User extends JFrame {
 
     private Graph g;
-    private InformationPanel information;
-    private PathPanel path;
-    private Parking parking;
 
     public User(Graph g) {
         this.g = g;
@@ -25,18 +26,20 @@ public class User extends JFrame {
         init();
     }
 
-    //初始化自定义组件
+    /**
+     * 将功能面板加入到本框架中
+     */
     private void init() {
-        information = new InformationPanel(g);
-        information.setVisible(true);
+        //景点信息（包括通知）展示
+        InformationPanel information = new InformationPanel(g);
         sceneryPanel.add(information);
 
-        path = new PathPanel(g);
-        path.setVisible(true);
+        //路径查找页面（最短路径和导游图）
+        PathPanel path = new PathPanel(g);
         pathPanel.add(path);
 
-        parking = new Parking();
-        parking.setVisible(true);
+        //停车场页面
+        Parking parking = new Parking();
         parkingPanel.add(parking);
     }
 
@@ -44,6 +47,10 @@ public class User extends JFrame {
     private void createUIComponents() {
     }
 
+    /**
+     * 用于在用户界面退出的时候，打开登陆界面（Main类）
+     * @param e 事件监听对象
+     */
     private void thisWindowClosing(WindowEvent e) {
         Main m = new Main();
         m.setVisible(true);
@@ -100,7 +107,7 @@ public class User extends JFrame {
             tabbedPane1.addTab("\u505c\u8f66\u573a\u7cfb\u7edf", parkingPanel);
         }
         contentPane.add(tabbedPane1);
-        setSize(965, 585);
+        setSize(1015, 625);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
