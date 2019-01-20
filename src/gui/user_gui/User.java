@@ -2,11 +2,11 @@
  * Created by JFormDesigner on Thu Jan 17 09:14:11 CST 2019
  */
 
-package GUI.user_gui;
+package gui.user_gui;
 
 import java.awt.event.*;
 
-import GUI.Main;
+import gui.Main;
 import graph.Graph;
 
 import java.awt.*;

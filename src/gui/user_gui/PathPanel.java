@@ -2,14 +2,13 @@
  * Created by JFormDesigner on Thu Jan 17 21:29:18 CST 2019
  */
 
-package GUI.user_gui;
+package gui.user_gui;
 
 import java.awt.event.*;
 
 import graph.Graph;
 import graph.algorithm.other.UnionFind;
 import graph.algorithm.short_path.Dijkstra;
-import graph.algorithm.small_tree.Prim;
 import tour.ShortPathSearch;
 import tour.TourPath;
 

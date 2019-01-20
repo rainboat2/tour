@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 import java.util.Stack;
 
 /**
- * 本类为 GUI 中查找最短路径的功能提供支持
+ * 本类为 gui 中查找最短路径的功能提供支持
  *
  * 基本思路：
  * 1. 调用最短路径算法获得最短路径的节点序列

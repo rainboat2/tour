@@ -1,6 +1,6 @@
-package GUI.admin_gui;
+package gui.admin_gui;
 
-import GUI.Main;
+import gui.Main;
 import graph.Graph;
 
 import java.awt.*;

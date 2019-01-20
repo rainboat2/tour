@@ -1,4 +1,4 @@
-package GUI.admin_gui;
+package gui.admin_gui;
 
 import graph.Graph;
 import graph.Vertex;

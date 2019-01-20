@@ -1,7 +1,7 @@
-package GUI;
+package gui;
 
-import GUI.admin_gui.Admin;
-import GUI.user_gui.User;
+import gui.admin_gui.Admin;
+import gui.user_gui.User;
 import graph.Graph;
 
 import java.awt.*;

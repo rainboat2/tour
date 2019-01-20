@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Wed Jan 16 16:12:05 CST 2019
  */
 
-package GUI.admin_gui;
+package gui.admin_gui;
 
 import graph.Graph;
 import graph.Vertex;

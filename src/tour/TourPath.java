@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * 本类为 GUI 中以下两个功能提供支持
+ * 本类为 gui 中以下两个功能提供支持
  * 管理员，导游路径分析
  * 用户，获取导游路径
  *

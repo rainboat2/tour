@@ -2,9 +2,9 @@
  * Created by JFormDesigner on Thu Jan 17 09:22:20 CST 2019
  */
 
-package GUI.user_gui;
+package gui.user_gui;
 
-import GUI.admin_gui.VertexShow;
+import gui.admin_gui.VertexShow;
 import graph.Graph;
 import graph.Vertex;
 import tour.Notification;

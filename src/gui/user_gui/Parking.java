@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Thu Jan 17 23:34:57 CST 2019
  */
 
-package GUI.user_gui;
+package gui.user_gui;
 
 import tour.ParkingSystem;
 

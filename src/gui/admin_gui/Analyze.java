@@ -1,4 +1,4 @@
-package GUI.admin_gui;
+package gui.admin_gui;
 
 import java.awt.event.*;
 import graph.Graph;
