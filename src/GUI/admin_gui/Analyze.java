@@ -70,6 +70,16 @@ public class Analyze extends JPanel {
         resultArea.setText(tourPath.getTourPathAnalysis(start));
     }
 
+    private void antAnalysisMouseClicked(MouseEvent e) {
+        try{
+            String start = tourStart.getText();
+            TourPath tourPath = new TourPath(g);
+            resultArea.setText(tourPath.antTourPathAnalysis(start));
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+
     @SuppressWarnings("Duplicates")
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -93,6 +103,7 @@ public class Analyze extends JPanel {
         resultArea = new JTextArea();
         tourStart = new JTextField();
         label7 = new JLabel();
+        antAnalysis = new JButton();
 
         //======== this ========
         setLayout(null);
@@ -214,7 +225,7 @@ public class Analyze extends JPanel {
         label5.setBounds(110, 245, 200, 45);
 
         //---- tourAnalyze ----
-        tourAnalyze.setText("\u5f00\u59cb\u5206\u6790");
+        tourAnalyze.setText("\u6700\u5c0f\u751f\u6210\u6811\u5206\u6790");
         tourAnalyze.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
         tourAnalyze.addMouseListener(new MouseAdapter() {
             @Override
@@ -223,7 +234,7 @@ public class Analyze extends JPanel {
             }
         });
         add(tourAnalyze);
-        tourAnalyze.setBounds(365, 301, 115, 30);
+        tourAnalyze.setBounds(365, 301, 135, 30);
 
         //======== scrollPane2 ========
         {
@@ -242,6 +253,18 @@ public class Analyze extends JPanel {
         label7.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
         add(label7);
         label7.setBounds(115, 300, 50, 30);
+
+        //---- antAnalysis ----
+        antAnalysis.setText("\u8681\u7fa4\u7b97\u6cd5\u5206\u6790");
+        antAnalysis.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
+        antAnalysis.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                antAnalysisMouseClicked(e);
+            }
+        });
+        add(antAnalysis);
+        antAnalysis.setBounds(540, 300, 140, 30);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -280,5 +303,6 @@ public class Analyze extends JPanel {
     private JTextArea resultArea;
     private JTextField tourStart;
     private JLabel label7;
+    private JButton antAnalysis;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

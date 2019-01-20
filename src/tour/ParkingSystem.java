@@ -22,7 +22,7 @@ public class ParkingSystem {
         long arriveTime;
         String licenseTag;
 
-        public Car(String licenseTag) {
+        Car(String licenseTag) {
             this.licenseTag = licenseTag;
         }
     }
@@ -36,7 +36,7 @@ public class ParkingSystem {
     public String arrive(String licenseTag) {
         Car car = new Car(licenseTag);
         if (isExit(licenseTag))
-            return "车牌号不能重复!\n";
+            throw new RuntimeException("车牌号不能重复");
         if (parkingLot.isFull()) {
             road.enQueue(car);
             return String.format("车库已满, 汽车%s停在了便道上\n", car.licenseTag);
@@ -65,7 +65,7 @@ public class ParkingSystem {
      */
     public String leave(String licenseTag) {
         if (!isExit(licenseTag))
-            return String.format("汽车%s不存在\n", licenseTag);
+            throw new RuntimeException("该车牌号不存在");
 
         StringBuilder s = new StringBuilder();
         while (!parkingLot.isEmpty()) {

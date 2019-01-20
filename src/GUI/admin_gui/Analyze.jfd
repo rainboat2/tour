@@ -148,11 +148,11 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "tourAnalyze"
-				"text": "开始分析"
+				"text": "最小生成树分析"
 				"font": #Font1
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tourAnalyzeMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 115
+				"width": 135
 				"height": 30
 				"x": 365
 				"y": 301
@@ -185,6 +185,17 @@ new FormModel {
 				"width": 50
 				"height": 30
 				"x": 115
+				"y": 300
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "antAnalysis"
+				"text": "蚁群算法分析"
+				"font": #Font1
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "antAnalysisMouseClicked", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 140
+				"height": 30
+				"x": 540
 				"y": 300
 			} )
 		}, new FormLayoutConstraints( null ) {

@@ -2,7 +2,6 @@ package graph;
 
 public class Vertex {
 
-
     private String name;
     private String description;
     private int popular;
@@ -98,7 +97,7 @@ public class Vertex {
 
     /**
      * 将字符串转化为数字，
-     * 若是不可转化的字符串，则将其设置为0
+     * 若是不可转化的字符串，则将其设置为 0
      * @param s 需要转为数字的字符串
      * @return 转化的结果
      */

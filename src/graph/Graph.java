@@ -17,7 +17,7 @@ public class Graph {
      * 邻接表的存储方式
      */
     private class Node {
-        final Vertex vertex;
+        Vertex vertex;
         List<Edge> edges;
 
         Node(Vertex v) {
@@ -181,14 +181,15 @@ public class Graph {
     }
 
     /**
-     * @return 返回图中所有的节点
+     * @return 返回图中所有节点的一个迭代器
      */
     public Iterable<Vertex> getAllVertex() {
-        LinkedList<Vertex> list = new LinkedList<>();
+        ArrayList<Vertex> list = new ArrayList<>(size());
         for (int i = 0; i < size(); i++)
             list.add(entry[i].vertex);
         return list;
     }
+
 
     /**
      * 删除指定的节点
@@ -254,7 +255,7 @@ public class Graph {
     }
 
     /**
-     * @return 图中的所有边
+     * @return 包含图中的所有边的一个可迭代对象
      */
     public Iterable<Edge> getAllEdge() {
         Set<Edge> set = new HashSet<>();
@@ -290,7 +291,6 @@ public class Graph {
     }
 
     /**
-     *
      * 根据两个节点获取图中的一条边
      * @param a 节点一的名称
      * @param b 节点二的名称
@@ -301,7 +301,6 @@ public class Graph {
     }
 
     /**
-     *
      * 根据两个节点获取图中的一条边
      * @param v 节点一对象
      * @param w 节点二对象

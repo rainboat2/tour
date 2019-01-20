@@ -27,10 +27,25 @@ public class Parking extends JPanel {
      * @param e 事件监听信息
      */
     private void inMouseClicked(MouseEvent e) {
+        try{
+            String license = getInput();
+            String info = parkingSystem.arrive(license);
+            information.append(info);
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+
+    /**
+     * 从输入框中获取用户的输入，如果为空，则抛出异常
+     * @return 输入框中的值
+     */
+    private String getInput(){
         String license = licenseText.getText();
+        if (license.equals(""))
+            throw new RuntimeException("输入不能为空");
         licenseText.setText("");
-        String info = parkingSystem.arrive(license);
-        information.append(info);
+        return license;
     }
 
     /**
@@ -38,9 +53,13 @@ public class Parking extends JPanel {
      * @param e 事件监听对象
      */
     private void outMouseClicked(MouseEvent e) {
-        String license = licenseText.getText();
-        String info = parkingSystem.leave(license);
-        information.append(info);
+        try{
+            String license = getInput();
+            String info = parkingSystem.leave(license);
+            information.append(info);
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
 
     @SuppressWarnings("Duplicates")

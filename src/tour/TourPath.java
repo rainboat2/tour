@@ -3,10 +3,12 @@ package tour;
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
+import graph.algorithm.ant.ACO;
 import graph.algorithm.other.HamiltonRoadFinder;
 import graph.algorithm.other.PathSequenceAnalyser;
 import graph.algorithm.small_tree.Kruskal;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -17,26 +19,22 @@ import java.util.NoSuchElementException;
  * 用户，获取导游路径
  *
  *  基本实现思路：
- *  1. 指定起点，使用 HamiltonRoadFinder 获取一个节点序列（理想最优路线）
+ *  1. 指定起点，使用算法获取一个节点序列（理想最优路线）
  *  2. 使用 PathSequenceAnalyser 对获取的节点进行分析
  *  3. 获取分析的结果（导游路线，缺失路径)用于显示
  */
 public class TourPath {
 
     private Graph g;
-    private HamiltonRoadFinder finder;
 
     public TourPath(Graph g) {
-        this(g, new HamiltonRoadFinder(new Kruskal(g).subTree()));
+        this.g = g;
     }
 
-    public TourPath(Graph g, HamiltonRoadFinder finder){
-        this.g = g;
-        this.finder = finder;
-    }
 
     /**
-     * 通过调用PathSequenceAnalysis对节点序列进行分析处理
+     * 调用HamiltonRodeFinder 找到一条理想路径
+     * 使用PathSequenceAnalyser对理想路径进行分析处理
      * 得到一个导游路线（近似解）
      *
      * @param start 导游路线的起点
@@ -45,29 +43,62 @@ public class TourPath {
     public String tourPath(String start) {
         if (g.getVertex(start) == null)
             throw new NoSuchElementException("找不到指定节点");
-        PathSequenceAnalyser analysis = getAnalyser(start);
-        return showTourPath(analysis.getTourPath());
+        HamiltonRoadFinder finder = new HamiltonRoadFinder(new Kruskal(g).subTree());
+        PathSequenceAnalyser analyser = new PathSequenceAnalyser(g, finder.getSequence(g.indexOf(start)));
+        return showTourPath(analyser.getTourPath());
     }
 
 
     /**
-     * 通过调用PathSequenceAnalysis中的相关方法，
-     * 得到所需的分析结果，并对结果进行处理
+     * 调用HamiltonRodeFinder 找到一条理想路径
+     * 调用analyzePath方法，得到详细的分析结果
      *
      * @param start 导游图的起点
-     * @return  分析结果，包括以下内容
-     *          1. 起点
-     *          2. 理想路径（由finder找到，用于分析的序列）
-     *          3. 缺少路径
-     *          4. 最终生成导游路径
-     * @see PathSequenceAnalyser
+     * @return  分析结果
+     * @see HamiltonRoadFinder
      */
     public String getTourPathAnalysis(String start){
         if (g.getVertex(start) == null)
             throw new NoSuchElementException("找不到指定节点");
+        HamiltonRoadFinder finder = new HamiltonRoadFinder(new Kruskal(g).subTree());
+        List<Vertex> sequence = finder.getSequence(g.indexOf(start));
+        return analyzePath(sequence, start);
+    }
 
+    /**
+     * 由蚁群算法生成的一条理想路径
+     * 调用analyzePath方法，得到详细的分析结果
+     *
+     * @return 导游图分析结果
+     * @see ACO
+     */
+    public String antTourPathAnalysis(String start){
+        if (g.getVertex(start) == null)
+            throw new NoSuchElementException("找不到指定节点");
+        ACO aco = new ACO(g, g.indexOf(start), 13);
+        aco.run(200);
+        // result = [start 、……、start]
+        int[] result = aco.getBestTour();
+        List<Vertex> sequence = new ArrayList<>(result.length);
+        for (int i = 0; i < result.length; i++)
+            sequence.add(g.getVertex(result[i]));
+        return analyzePath(sequence, start);
+    }
+
+    /**
+     * 对节点序列（理想路径）进行分析，生成详尽的分析结果
+     *
+     * @param sequence 需要分析的节点序列
+     * @return 分析结果，包括以下内容
+     *         1. 起点
+     *         2. 理想路径（由finder找到，用于分析的序列）
+     *         3. 缺少路径
+     *         4. 最终生成导游路径
+     * @see PathSequenceAnalyser
+     */
+    private String analyzePath(List<Vertex> sequence, String start){
+        PathSequenceAnalyser analyser = new PathSequenceAnalyser(g, sequence);
         // 对序列进行分析，并获得分析结果
-        PathSequenceAnalyser analyser = getAnalyser(start);
         Iterator<Vertex> it = analyser.getSequence().iterator();
         List<Vertex> tourPath = analyser.getTourPath();
         String missPath = analyser.getMissPathAnalyzeResult();
@@ -87,18 +118,6 @@ public class TourPath {
         return s.toString();
     }
 
-    /**
-     * 生成一个用于对路径进行分析的对象
-     *
-     * @param  start 路径起点
-     * @return 路径分析对象
-     * @see PathSequenceAnalyser
-     */
-    private PathSequenceAnalyser getAnalyser(String start) {
-        List<Vertex> sequence = finder.getSequence(g.indexOf(start));  // 使用finder获取用于分析的节点序列
-        PathSequenceAnalyser analyser = new PathSequenceAnalyser(g, sequence);
-        return analyser;
-    }
 
     /**
      * 接受一个路径序列，生成一条用字符串表示的路径
