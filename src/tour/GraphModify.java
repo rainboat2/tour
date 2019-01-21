@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 /**
  * GraphModify 封装边和节点的添加，删除和修改方法
- * 为GUI模块提供相关方法的接口
+ * 为GUI管理员景点信息模块提供支持
  *
  * 通用流程：
  * 1. 根据所需的内容生成相应的对话框
@@ -127,7 +127,7 @@ public class GraphModify {
      */
     private String[] showDialog(Vertex v) {
         //----------------------构建对话框--------------------------
-        JFileChooser chooser = new JFileChooser(new File("img/default.jpg"));
+        JFileChooser chooser = new JFileChooser(new File("file/img/default.jpg"));
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         JTextField name = new JTextField(v.getName());
         JTextField restArea = new JTextField(v.getRestArea() + "");

@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Graph {
 
-    private static Graph graph;  //保存一个图的对象，用于单态设计模式
+    private static Graph graph;  //保存一个静态的Graph对象，用于单态设计模式
 
     private Map<String, Integer> map;  //记录每个节点名字对应的索引
     private Node[] entry; //邻接表

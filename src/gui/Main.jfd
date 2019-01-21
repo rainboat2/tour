@@ -38,7 +38,7 @@ new FormModel {
 					"height": 40
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
+					name: "background"
 					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workplace\\tour\\img\\背景图.jpg" )
 					"foreground": new com.jformdesigner.model.SwingColor( "Button.foreground" )
 					"horizontalAlignment": 0

@@ -24,6 +24,7 @@ public class Main extends JFrame {
     public Main() {
         loadGraph();
         initComponents();
+        background.setIcon(new ImageIcon("file/img/背景图.jpg"));
     }
 
     /**
@@ -33,7 +34,7 @@ public class Main extends JFrame {
         try{
             g = Graph.getGraph();
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "数据文件损坏，程序初始化失败", "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "数据文件丢失或损坏，程序初始化失败", "错误", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
     }
@@ -83,7 +84,7 @@ public class Main extends JFrame {
         panel1 = new JPanel();
         button1 = new JButton();
         button2 = new JButton();
-        label1 = new JLabel();
+        background = new JLabel();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -121,17 +122,17 @@ public class Main extends JFrame {
             panel1.add(button2);
             button2.setBounds(295, 260, 140, 40);
 
-            //---- label1 ----
-            label1.setIcon(new ImageIcon("D:\\workplace\\tour\\img\\\u80cc\u666f\u56fe.jpg"));
-            label1.setForeground(UIManager.getColor("Button.foreground"));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
-            panel1.add(label1);
-            label1.setBounds(0, 5, 775, 458);
+            //---- background ----
+            background.setIcon(new ImageIcon("D:\\workplace\\tour\\img\\\u80cc\u666f\u56fe.jpg"));
+            background.setForeground(UIManager.getColor("Button.foreground"));
+            background.setHorizontalAlignment(SwingConstants.CENTER);
+            background.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
+            panel1.add(background);
+            background.setBounds(0, 5, 775, 458);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
-                for (int i = 0; i < panel1.getComponentCount(); i++) {
+                for(int i = 0; i < panel1.getComponentCount(); i++) {
                     Rectangle bounds = panel1.getComponent(i).getBounds();
                     preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                     preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -153,6 +154,6 @@ public class Main extends JFrame {
     private JPanel panel1;
     private JButton button1;
     private JButton button2;
-    private JLabel label1;
+    private JLabel background;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

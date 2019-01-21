@@ -58,7 +58,7 @@ public class VertexShow extends JPanel {
         File f = new File(path);
         ImageIcon image;
         if (f.exists()) image = new ImageIcon(path);
-        else image = new ImageIcon("img/default.jpg");
+        else image = new ImageIcon("file/img/default.jpg");
         Image img = image.getImage();
         img = img.getScaledInstance(370, 160, Image.SCALE_DEFAULT);
         image.setImage(img);
