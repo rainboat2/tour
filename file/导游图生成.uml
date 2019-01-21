@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>tour</OriginalElement>
+  <nodes>
+    <node x="195.0" y="103.0">graph.algorithm.other.PathSequenceAnalyser</node>
+    <node x="665.0" y="114.5">graph.algorithm.other.HamiltonRoadFinder</node>
+    <node x="482.0" y="126.0">graph.algorithm.small_tree.Kruskal</node>
+    <node x="344.6250000000001" y="272.0">tour.TourPath</node>
+    <node x="527.75" y="0.0">graph.algorithm.small_tree.Small_Tree</node>
+    <node x="446.375" y="421.0">gui.admin_gui.Analyze</node>
+    <node x="0.0" y="114.5">graph.algorithm.ant.ACO</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="tour.TourPath" target="graph.algorithm.small_tree.Small_Tree">
+      <point x="50.43749999999994" y="-49.5" />
+      <point x="529.5625" y="232.0" />
+      <point x="654.5" y="232.0" />
+      <point x="654.5" y="78.0" />
+      <point x="649.25" y="78.0" />
+      <point x="40.5" y="26.5" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.other.PathSequenceAnalyser">
+      <point x="-50.43750000000006" y="-49.5" />
+      <point x="428.6875" y="232.0" />
+      <point x="261.75" y="232.0" />
+      <point x="-66.75" y="49.5" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.small_tree.Kruskal">
+      <point x="16.812499999999943" y="-49.5" />
+      <point x="495.9375" y="222.0" />
+      <point x="563.0" y="222.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="gui.admin_gui.Analyze" target="graph.algorithm.other.HamiltonRoadFinder">
+      <point x="66.66666666666663" y="-26.5" />
+      <point x="613.0416666666666" y="396.0" />
+      <point x="836.5787037037037" y="396.0" />
+      <point x="836.5787037037037" y="252.0" />
+      <point x="897.5" y="252.0" />
+      <point x="92.99999999999997" y="38.0" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.ant.ACO">
+      <point x="-117.68750000000006" y="-49.5" />
+      <point x="361.4375" y="252.0" />
+      <point x="43.75" y="252.0" />
+      <point x="-43.75" y="38.0" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.other.HamiltonRoadFinder">
+      <point x="117.68749999999994" y="-49.5" />
+      <point x="596.8125" y="252.0" />
+      <point x="804.5" y="252.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="gui.admin_gui.Analyze" target="tour.TourPath">
+      <point x="-66.66666666666669" y="-26.5" />
+      <point x="479.70833333333337" y="396.0" />
+      <point x="411.8750000000001" y="396.0" />
+      <point x="-67.25" y="49.5" />
+    </edge>
+    <edge source="graph.algorithm.small_tree.Kruskal" target="graph.algorithm.small_tree.Small_Tree">
+      <point x="0.0" y="-26.5" />
+      <point x="563.0" y="78.0" />
+      <point x="568.25" y="78.0" />
+      <point x="-40.5" y="26.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="472.0" y="237.0" />
+  <SelectedNodes>
+    <node>graph.algorithm.other.PathSequenceAnalyser</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

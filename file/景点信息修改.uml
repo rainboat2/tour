@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>gui.admin_gui.Management</OriginalElement>
+  <nodes>
+    <node x="30.254385964912288" y="180.0">graph.Graph</node>
+    <node x="62.53508771929825" y="0.0">graph.Vertex</node>
+    <node x="21.594298245614056" y="340.0">gui.admin_gui.Management</node>
+    <node x="71.87938596491229" y="260.0">tour.GraphModify</node>
+    <node x="10.5" y="100.0">graph.Edge</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="graph.Graph" target="graph.Edge">
+      <point x="-10.375" y="-15.0" />
+      <point x="61.37938596491229" y="160.0" />
+      <point x="68.25" y="160.0" />
+      <point x="19.25" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="tour.GraphModify">
+      <point x="31.249999999999986" y="-15.0" />
+      <point x="115.34429824561404" y="310.0" />
+      <point x="164.87938596491227" y="310.0" />
+      <point x="31.0" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="graph.Graph">
+      <point x="-31.250000000000014" y="-15.0" />
+      <point x="52.84429824561404" y="320.0" />
+      <point x="48.24561403508771" y="320.0" />
+      <point x="48.24561403508771" y="235.0" />
+      <point x="40.62938596491229" y="235.0" />
+      <point x="-31.125" y="15.0" />
+    </edge>
+    <edge source="graph.Edge" target="graph.Vertex">
+      <point x="19.25" y="-15.0" />
+      <point x="68.25" y="80.0" />
+      <point x="89.41008771929825" y="80.0" />
+      <point x="-16.125" y="15.0" />
+    </edge>
+    <edge source="tour.GraphModify" target="graph.Graph">
+      <point x="-46.5" y="-15.0" />
+      <point x="87.37938596491229" y="235.0" />
+      <point x="82.12938596491229" y="235.0" />
+      <point x="10.375" y="15.0" />
+    </edge>
+    <edge source="graph.Graph" target="graph.Vertex">
+      <point x="31.125" y="-15.0" />
+      <point x="102.87938596491229" y="160.0" />
+      <point x="119.63377192982456" y="160.0" />
+      <point x="119.63377192982456" y="80.0" />
+      <point x="110.91008771929825" y="80.0" />
+      <point x="5.375" y="15.0" />
+    </edge>
+    <edge source="tour.GraphModify" target="graph.Vertex">
+      <point x="15.5" y="-15.0" />
+      <point x="149.37938596491227" y="235.0" />
+      <point x="153.13377192982455" y="235.0" />
+      <point x="153.13377192982455" y="70.0" />
+      <point x="121.66008771929825" y="70.0" />
+      <point x="16.125" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="graph.Vertex">
+      <point x="52.0833333333333" y="-15.0" />
+      <point x="136.17763157894734" y="320.0" />
+      <point x="206.37938596491227" y="320.0" />
+      <point x="206.37938596491227" y="50.0" />
+      <point x="143.16008771929825" y="50.0" />
+      <point x="37.625000000000014" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="357.5" y="215.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

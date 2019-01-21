@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>graph.Graph</OriginalElement>
+  <nodes>
+    <node x="165.0" y="180.0">graph.algorithm.other.PathSequenceAnalyser</node>
+    <node x="143.08840773809538" y="0.0">graph.algorithm.short_path.ShortPath</node>
+    <node x="0.0" y="500.0">tour.ShortPathSearch</node>
+    <node x="1119.5625" y="590.0">gui.Main</node>
+    <node x="800.9991220238097" y="420.0">gui.admin_gui.Analyze</node>
+    <node x="1588.2803720238098" y="420.0">tool.MyStack</node>
+    <node x="359.74999999999994" y="590.0">gui.user_gui.PathPanel</node>
+    <node x="367.99999999999994" y="80.0">graph.algorithm.ant.Ant</node>
+    <node x="1004.25" y="280.0">tour.GraphModify</node>
+    <node x="479.74999999999994" y="180.0">graph.algorithm.small_tree.Prim</node>
+    <node x="682.75" y="180.0">graph.algorithm.other.HamiltonRoadFinder</node>
+    <node x="573.75" y="180.0">graph.algorithm.small_tree.Kruskal</node>
+    <node x="1533.875" y="590.0">gui.user_gui.Parking</node>
+    <node x="392.24999999999994" y="280.0">tour.TourPath</node>
+    <node x="1444.75" y="180.0">tool.Sort</node>
+    <node x="455.99999999999994" y="80.0">graph.algorithm.small_tree.Small_Tree</node>
+    <node x="1114.5625" y="500.0">gui.admin_gui.Admin</node>
+    <node x="1422.25" y="280.0">tour.Search_Sort</node>
+    <node x="1512.875" y="500.0">tour.ParkingSystem</node>
+    <node x="852.0884077380955" y="80.0">graph.algorithm.other.UnionFind</node>
+    <node x="782.8384077380954" y="280.0">gui.admin_gui.MatrixShow</node>
+    <node x="1284.25" y="280.0">gui.admin_gui.VertexShow</node>
+    <node x="1139.5625" y="700.0">gui.user_gui.User</node>
+    <node x="1464.2803720238098" y="420.0">tool.MyQueue</node>
+    <node x="1148.25" y="280.0">tour.Notification</node>
+    <node x="131.75" y="80.0">graph.algorithm.short_path.Dijkstra</node>
+    <node x="1137.0625" y="420.0">gui.admin_gui.Management</node>
+    <node x="364.99999999999994" y="180.0">graph.algorithm.ant.ACO</node>
+    <node x="1297.2803720238098" y="420.0">gui.user_gui.InformationPanel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="tour.TourPath" target="graph.algorithm.small_tree.Small_Tree">
+      <point x="6.25" y="-15.0" />
+      <point x="448.49999999999994" y="230.0" />
+      <point x="469.24999999999994" y="230.0" />
+      <point x="469.24999999999994" y="160.0" />
+      <point x="474.49999999999994" y="160.0" />
+      <point x="-37.0" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.User" target="gui.user_gui.Parking">
+      <point x="33.299999999999955" y="-15.0" />
+      <point x="1209.8625" y="680.0" />
+      <point x="1602.125" y="680.0" />
+      <point x="22.75" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="gui.admin_gui.VertexShow">
+      <point x="7.8125" y="-15.0" />
+      <point x="1207.375" y="350.0" />
+      <point x="1299.0" y="350.0" />
+      <point x="-44.25" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.ant.ACO" target="graph.algorithm.ant.Ant">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Analyze" target="graph.algorithm.other.HamiltonRoadFinder">
+      <point x="-13.142857142857167" y="-15.0" />
+      <point x="833.8562648809525" y="380.0" />
+      <point x="772.3384077380954" y="380.0" />
+      <point x="772.3384077380954" y="260.0" />
+      <point x="822.75" y="260.0" />
+      <point x="56.0" y="15.0" />
+    </edge>
+    <edge source="gui.Main" target="gui.user_gui.User">
+      <point x="28.5" y="15.0" />
+      <point x="1186.0625" y="640.0" />
+      <point x="1180.2625" y="640.0" />
+      <point x="3.7000000000000455" y="-15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Analyze" target="graph.algorithm.other.UnionFind">
+      <point x="26.285714285714278" y="-15.0" />
+      <point x="873.284836309524" y="390.0" />
+      <point x="960.75" y="390.0" />
+      <point x="960.75" y="160.0" />
+      <point x="896.6717410714289" y="160.0" />
+      <point x="-8.916666666666657" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.PathPanel" target="tour.ShortPathSearch">
+      <point x="-29.714285714285666" y="-15.0" />
+      <point x="382.0357142857143" y="560.0" />
+      <point x="108.0" y="560.0" />
+      <point x="36.0" y="15.0" />
+    </edge>
+    <edge source="tour.ShortPathSearch" target="graph.algorithm.short_path.ShortPath">
+      <point x="0.0" y="-15.0" />
+      <point x="72.0" y="55.0" />
+      <point x="160.58840773809538" y="55.0" />
+      <point x="-35.0" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.InformationPanel" target="tour.Notification">
+      <point x="-36.75" y="-15.0" />
+      <point x="1334.0303720238098" y="330.0" />
+      <point x="1249.75" y="330.0" />
+      <point x="43.5" y="15.0" />
+    </edge>
+    <edge source="tour.Search_Sort" target="tool.Sort">
+      <point x="-29.25" y="-15.0" />
+      <point x="1451.5" y="260.0" />
+      <point x="1462.75" y="260.0" />
+      <point x="-18.0" y="15.0" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.small_tree.Kruskal">
+      <point x="18.75" y="-15.0" />
+      <point x="460.99999999999994" y="240.0" />
+      <point x="618.25" y="240.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="gui.Main" target="gui.admin_gui.Admin">
+      <point x="-9.5" y="-15.0" />
+      <point x="1148.0625" y="570.0" />
+      <point x="1146.8125" y="570.0" />
+      <point x="-10.75" y="15.0" />
+    </edge>
+    <edge source="tour.ParkingSystem" target="tool.MyStack">
+      <point x="49.875" y="-15.0" />
+      <point x="1629.25" y="480.0" />
+      <point x="1661.0303720238098" y="480.0" />
+      <point x="24.25" y="15.0" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.other.HamiltonRoadFinder">
+      <point x="31.25" y="-15.0" />
+      <point x="473.49999999999994" y="250.0" />
+      <point x="710.75" y="250.0" />
+      <point x="-56.0" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.Parking" target="tour.ParkingSystem">
+      <point x="22.75" y="-15.0" />
+      <point x="1602.125" y="570.0" />
+      <point x="1612.625" y="570.0" />
+      <point x="33.25" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.other.PathSequenceAnalyser" target="graph.algorithm.short_path.Dijkstra">
+      <point x="-45.0" y="-15.0" />
+      <point x="210.0" y="160.0" />
+      <point x="200.0" y="160.0" />
+      <point x="22.75" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Admin" target="gui.admin_gui.Management">
+      <point x="32.25" y="-15.0" />
+      <point x="1189.8125" y="480.0" />
+      <point x="1230.8125" y="480.0" />
+      <point x="31.25" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.User" target="gui.user_gui.InformationPanel">
+      <point x="11.099999999999909" y="-15.0" />
+      <point x="1187.6625" y="650.0" />
+      <point x="1369.05" y="650.0" />
+      <point x="1369.05" y="480.0" />
+      <point x="1334.0303720238098" y="480.0" />
+      <point x="-36.75" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="tour.Notification">
+      <point x="-23.4375" y="-15.0" />
+      <point x="1176.125" y="380.0" />
+      <point x="1162.75" y="380.0" />
+      <point x="-43.5" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.User" target="gui.Main">
+      <point x="-11.099999999999909" y="-15.0" />
+      <point x="1165.4625" y="650.0" />
+      <point x="1148.0625" y="650.0" />
+      <point x="-9.5" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Admin" target="gui.admin_gui.Analyze">
+      <point x="-10.75" y="-15.0" />
+      <point x="1146.8125" y="470.0" />
+      <point x="869.9991220238097" y="470.0" />
+      <point x="23.0" y="15.0" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.ant.ACO">
+      <point x="-18.75" y="-15.0" />
+      <point x="423.49999999999994" y="240.0" />
+      <point x="383.49999999999994" y="240.0" />
+      <point x="-18.5" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.PathPanel" target="graph.algorithm.other.UnionFind">
+      <point x="44.571428571428555" y="-15.0" />
+      <point x="456.3214285714285" y="570.0" />
+      <point x="993.75" y="570.0" />
+      <point x="993.75" y="130.0" />
+      <point x="950.1717410714289" y="130.0" />
+      <point x="44.583333333333314" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.small_tree.Kruskal" target="graph.algorithm.small_tree.Small_Tree">
+      <point x="-29.666666666666686" y="-15.0" />
+      <point x="588.5833333333333" y="160.0" />
+      <point x="548.5" y="160.0" />
+      <point x="37.0" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.other.PathSequenceAnalyser" target="graph.algorithm.short_path.ShortPath">
+      <point x="45.0" y="-15.0" />
+      <point x="299.99999999999994" y="55.0" />
+      <point x="230.58840773809538" y="55.0" />
+      <point x="35.0" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.InformationPanel" target="gui.admin_gui.VertexShow">
+      <point x="-12.25" y="-15.0" />
+      <point x="14.75" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.small_tree.Kruskal" target="graph.algorithm.other.UnionFind">
+      <point x="29.666666666666686" y="-15.0" />
+      <point x="647.9166666666666" y="160.0" />
+      <point x="878.8384077380955" y="160.0" />
+      <point x="-26.75" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="tour.Search_Sort">
+      <point x="39.0625" y="-15.0" />
+      <point x="1238.625" y="370.0" />
+      <point x="1436.875" y="370.0" />
+      <point x="-43.875" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.User" target="gui.user_gui.PathPanel">
+      <point x="-33.299999999999955" y="-15.0" />
+      <point x="1143.2625" y="680.0" />
+      <point x="385.74999999999994" y="680.0" />
+      <point x="-26.0" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.PathPanel" target="tour.TourPath">
+      <point x="14.85714285714289" y="-15.0" />
+      <point x="426.60714285714283" y="570.0" />
+      <point x="422.74999999999994" y="570.0" />
+      <point x="422.74999999999994" y="400.0" />
+      <point x="429.74999999999994" y="400.0" />
+      <point x="-12.5" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Management" target="tour.GraphModify">
+      <point x="-54.6875" y="-15.0" />
+      <point x="1144.875" y="400.0" />
+      <point x="1035.25" y="400.0" />
+      <point x="-31.0" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Analyze" target="gui.admin_gui.MatrixShow">
+      <point x="13.142857142857139" y="-15.0" />
+      <point x="860.1419791666668" y="380.0" />
+      <point x="870.5884077380954" y="380.0" />
+      <point x="29.25" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.InformationPanel" target="tour.Search_Sort">
+      <point x="36.75" y="-15.0" />
+      <point x="1407.5303720238098" y="390.0" />
+      <point x="1495.375" y="390.0" />
+      <point x="14.625" y="15.0" />
+    </edge>
+    <edge source="tour.TourPath" target="graph.algorithm.other.PathSequenceAnalyser">
+      <point x="-31.25" y="-15.0" />
+      <point x="410.99999999999994" y="250.0" />
+      <point x="300.0" y="250.0" />
+      <point x="45.0" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.small_tree.Prim" target="graph.algorithm.small_tree.Small_Tree">
+      <point x="0.0" y="-15.0" />
+      <point x="516.75" y="160.0" />
+      <point x="511.49999999999994" y="160.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="tour.ParkingSystem" target="tool.MyQueue">
+      <point x="-49.875" y="-15.0" />
+      <point x="1529.5" y="480.0" />
+      <point x="1490.2803720238098" y="480.0" />
+      <point x="-26.0" y="15.0" />
+    </edge>
+    <edge source="graph.algorithm.short_path.Dijkstra" target="graph.algorithm.short_path.ShortPath">
+      <point x="0.0" y="-15.0" />
+      <point x="177.25" y="55.0" />
+      <point x="195.58840773809538" y="55.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Admin" target="gui.Main">
+      <point x="10.75" y="15.0" />
+      <point x="1168.3125" y="570.0" />
+      <point x="1167.0625" y="570.0" />
+      <point x="9.5" y="-15.0" />
+    </edge>
+    <edge source="gui.admin_gui.Analyze" target="tour.TourPath">
+      <point x="-39.42857142857143" y="-15.0" />
+      <point x="807.5705505952383" y="400.0" />
+      <point x="454.74999999999994" y="400.0" />
+      <point x="12.5" y="15.0" />
+    </edge>
+    <edge source="gui.user_gui.PathPanel" target="graph.algorithm.short_path.Dijkstra">
+      <point x="-14.85714285714289" y="-15.0" />
+      <point x="396.89285714285705" y="550.0" />
+      <point x="154.5" y="550.0" />
+      <point x="-22.75" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8170690623245369" x="638.5473776097415" y="333.44609243122596" />
+  <SelectedNodes>
+    <node>graph.algorithm.other.PathSequenceAnalyser</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
