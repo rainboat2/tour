@@ -7,6 +7,7 @@ import graph.algorithm.ant.ACO;
 import graph.algorithm.other.HamiltonRoadFinder;
 import graph.algorithm.other.PathSequenceAnalyser;
 import graph.algorithm.small_tree.Kruskal;
+import graph.algorithm.small_tree.Small_Tree;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,7 +46,7 @@ public class TourPath {
             throw new NoSuchElementException("找不到指定节点");
         HamiltonRoadFinder finder = new HamiltonRoadFinder(new Kruskal(g).subTree());
         PathSequenceAnalyser analyser = new PathSequenceAnalyser(g, finder.getSequence(g.indexOf(start)));
-        return showTourPath(analyser.getTourPath());
+        return "推荐的导游路径：\n" + showTourPath(analyser.getTourPath());
     }
 
 
@@ -60,7 +61,8 @@ public class TourPath {
     public String getTourPathAnalysis(String start){
         if (g.getVertex(start) == null)
             throw new NoSuchElementException("找不到指定节点");
-        HamiltonRoadFinder finder = new HamiltonRoadFinder(new Kruskal(g).subTree());
+        Small_Tree sm = new Kruskal(g);
+        HamiltonRoadFinder finder = new HamiltonRoadFinder(sm.subTree());
         List<Vertex> sequence = finder.getSequence(g.indexOf(start));
         return analyzePath(sequence, start);
     }
@@ -127,6 +129,11 @@ public class TourPath {
      * @return 可供显示的路径字符串
      */
     private String showTourPath(List<Vertex> path) {
+        if (path == null || path.isEmpty())
+            throw new UnsupportedOperationException("路径不能为空");
+        if (path.size() == 1)
+            return String.format("仅包含一个节点%s，无法生成路径", path.get(0).getName());
+
         StringBuilder s = new StringBuilder();
         Iterator<Vertex> it = path.iterator();
 
@@ -136,12 +143,12 @@ public class TourPath {
             Vertex next = it.next();
             Edge e = g.getEdge(cur, next);
             distance += e.distance();
-            s.append(cur.getName());
-            if (it.hasNext())
-                s.append("-->");
+            s.append(cur.getName()).append("-->");
             cur = next;
         }
-        s.append(String.format("\n总距离:%d, 预计耗费时间%d小时", distance, distance / 24));
+        //将最后一个节点添加到路径末尾
+        s.append(cur.getName()).append("\n\n");
+        s.append(String.format("总距离:%d, 预计耗费时间%d小时", distance, distance / 24));
         return s.toString();
     }
 }

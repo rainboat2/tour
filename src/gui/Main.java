@@ -10,7 +10,7 @@ import javax.swing.*;
 
 /**
  * 本类为整个项目的入口
- * 运行本类的main函数，即出现登陆界面
+ * 运行本类的main函数，出现登陆界面
  */
 public class Main extends JFrame {
 

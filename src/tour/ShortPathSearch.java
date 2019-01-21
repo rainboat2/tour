@@ -52,6 +52,9 @@ public class ShortPathSearch {
      */
     private String recover_path(Stack<Vertex> path) {
         if (path == null) return "无可用路径";
+        if (path.size() == 1)
+            return String.format("仅包括一个节点%s，无法生成路径", path.peek().getName());
+
         int distance = 0;
         StringBuilder s = new StringBuilder();
         Vertex cur = path.pop();

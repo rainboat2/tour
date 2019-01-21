@@ -30,9 +30,9 @@ public class Analyze extends JPanel {
         numberOfVertices.setText(g.size()+"个");
         numberOfPath.setText(g.numberOfEdges() + "条");
 
-        if      (uf.count() > 1)    hamilionRoad.setText("不存在");
-        else if (HamiltonRoadFinder.hasHamiltonRoad(g))  hamilionRoad.setText("一定存在");
-        else                        hamilionRoad.setText("可能存在");
+        if      (uf.count() > 1)    hamilionRoadText.setText("不存在");
+        else if (HamiltonRoadFinder.hasHamiltonRoad(g))  hamilionRoadText.setText("一定存在");
+        else                        hamilionRoadText.setText("可能存在");
     }
 
     private void flushButtonMouseClicked(MouseEvent e) {
@@ -93,7 +93,7 @@ public class Analyze extends JPanel {
         label6 = new JLabel();
         numberOfPath = new JLabel();
         label8 = new JLabel();
-        hamilionRoad = new JLabel();
+        hamilionRoadText = new JLabel();
         flushButton = new JButton();
         matrix = new JButton();
         label3 = new JLabel();
@@ -182,11 +182,11 @@ public class Analyze extends JPanel {
         add(label8);
         label8.setBounds(655, 122, 115, 30);
 
-        //---- hamilionRoad ----
-        hamilionRoad.setText("\u672a\u77e5");
-        hamilionRoad.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
-        add(hamilionRoad);
-        hamilionRoad.setBounds(771, 122, 119, 30);
+        //---- hamilionRoadText ----
+        hamilionRoadText.setText("\u672a\u77e5");
+        hamilionRoadText.setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 14));
+        add(hamilionRoadText);
+        hamilionRoadText.setBounds(771, 122, 119, 30);
 
         //---- flushButton ----
         flushButton.setText("\u5237\u65b0\u4fe1\u606f");
@@ -293,7 +293,7 @@ public class Analyze extends JPanel {
     private JLabel label6;
     private JLabel numberOfPath;
     private JLabel label8;
-    private JLabel hamilionRoad;
+    private JLabel hamilionRoadText;
     private JButton flushButton;
     private JButton matrix;
     private JLabel label3;

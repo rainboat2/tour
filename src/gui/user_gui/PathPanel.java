@@ -142,6 +142,11 @@ public class PathPanel extends JPanel {
 
         //======== scrollPane1 ========
         {
+
+            //---- resultArea ----
+            resultArea.setFont(new Font("\u5b8b\u4f53", Font.PLAIN, 12));
+            resultArea.setEditable(false);
+            resultArea.setLineWrap(true);
             scrollPane1.setViewportView(resultArea);
         }
         add(scrollPane1);
@@ -161,7 +166,7 @@ public class PathPanel extends JPanel {
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
+            for(int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

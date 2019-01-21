@@ -106,7 +106,7 @@ public class Management extends JPanel {
             graphModify.modify(name);
             vertexShow.draw(g, g.getVertex(name));  //更新右侧面板显示
             searchAndShow();  //更新表格
-        } catch (UnsupportedOperationException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -133,7 +133,7 @@ public class Management extends JPanel {
             graphModify.deleteVertex(name);
             searchAndShow();  //调用该方法更新表格
             vertexShow.draw(g, null); //刷新显示面板
-        } catch (NoSuchElementException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }

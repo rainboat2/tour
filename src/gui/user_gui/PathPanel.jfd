@@ -104,6 +104,9 @@ new FormModel {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "resultArea"
+					"font": new java.awt.Font( "宋体", 0, 12 )
+					"editable": false
+					"lineWrap": true
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 120
